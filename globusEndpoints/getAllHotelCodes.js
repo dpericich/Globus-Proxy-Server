@@ -2,17 +2,22 @@ const convert = require('xml-js');
 const fetchSOAP = require('../utils/xmlReqMethod');
 
 const call = async (xmlBody) => {
-    const unformattedJSON = fetchSOAP(xmlBody)
+    const unformattedJSON = await fetchSOAP(xmlBody)
         .then(res => res.data)
         .then((data) => {
             const options = { compact: true, spaces: 2 };
             let result = convert.xml2json(data, options);
             let jsonData = JSON.parse(result);
-            console.log(jsonData["soap:Envelope"]["soap:Body"]["GetAllHotelCodesResponse"]["GetAllHotelCodesResult"]["string"]);
 
             return jsonData["soap:Envelope"]["soap:Body"]["GetAllHotelCodesResponse"]["GetAllHotelCodesResult"]["string"]
         });
+
+    return serializeGetAllHotelCodes(unformattedJSON);
 };
+
+const serializeGetAllHotelCodes = (data) => {
+    return data.map(el => el["_text"]);
+}
 
 const callGetAllHotelCodes = async () => {
     const xmlBody = `<?xml version="1.0" encoding="utf-8"?>
