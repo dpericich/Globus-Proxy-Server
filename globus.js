@@ -1,6 +1,9 @@
 const expressGlobus = require('express');
 const router = expressGlobus.Router();
+// Endpoint Methods  
 const callGetHotelMedia = require('./globusEndpoints/getHotelMedia');
+const callGetAllHotelCodes = require('./globusEndpoints/getAllHotelCodes');
+
 
 // This controller will handle each of our Globus endpoints
 
@@ -9,6 +12,10 @@ const callGetHotelMedia = require('./globusEndpoints/getHotelMedia');
 
 router.get('/get-hotel-media', async (req, res) => {
     res.send(callGetHotelMedia());
+});
+
+router.get('/get-all-hotel-codes', async (req, res) => {
+    res.send(callGetAllHotelCodes());
 });
 
 // TODO: Need to see if there are any good error handling packages
