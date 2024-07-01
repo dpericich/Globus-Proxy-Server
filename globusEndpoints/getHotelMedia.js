@@ -14,9 +14,7 @@ const call = async (xmlBody) => {
       return jsonData["soap:Envelope"]["soap:Body"]["GetHotelMediaResponse"]["GetHotelMediaResult"]
     });
 
-  console.log(unformattedJSON)
-
-  // Will have a method to turn the JSON SOAP response to JSON for the Client
+  // TODO: Will have a method to turn the JSON SOAP response to JSON for the Client
   // formatJSON();
   return unformattedJSON;
 };
