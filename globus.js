@@ -11,11 +11,11 @@ const callGetAllHotelCodes = require('./globusEndpoints/getAllHotelCodes');
 // method directory.
 
 router.get('/get-hotel-media', async (req, res) => {
-    res.send(callGetHotelMedia());
+    res.json({ data: await callGetHotelMedia() });
 });
 
 router.get('/get-all-hotel-codes', async (req, res) => {
-    res.send(callGetAllHotelCodes());
+    res.json({ data: await callGetAllHotelCodes() });
 });
 
 // TODO: Need to see if there are any good error handling packages
