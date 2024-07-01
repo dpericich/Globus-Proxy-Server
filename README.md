@@ -7,3 +7,4 @@ This is a proxy server for making REST requests to the Globus API. It is a simpl
 1. Clone the repository
 2. Run `npm install` to install the dependencies
 3. Run `npm run dev:start` to start the server
+4. Navigate to any endpoint at `localhost:8000/api/v1/globus${endpoint}` to test
