@@ -15,27 +15,27 @@ const callGetAllHotelCodes = require('./globusEndpoints/getAllHotelCodes');
 //////////////// TOURS  //////////////////
 //////////////////////////////////////////
 
-// WIP
+// WIP - Daniel
 router.get('/get-all-available-tours', async (req, res) => {
     res.json({ data: await callGetAllAvailableTours() });
 });
 
-// WIP
+// WIP - Scott
 router.get('/get-tour-day-media', async (req, res) => {
     res.json({ data: await callGetTourDayMedia() });
 });
 
-// WIP
+// WIP - Daniel
 router.get('/get-tour-day-media-by-brand', async (req, res) => {
     res.json({ data: await callGetTourDayMediaByBrand() });
 });
 
-// WIP
+// WIP - Scott
 router.get('/get-tour-media', async (req, res) => {
     res.json({ data: await callGetTourMedia() });
 });
 
-// WIP
+// WIP - Daniel
 router.get('/get-tour-media-by-brand', async (req, res) => {
     res.json({ data: await callGetTourMediaByBrand() });
 });
@@ -52,27 +52,27 @@ router.get('/get-all-hotel-codes', async (req, res) => {
     res.json({ data: await callGetAllHotelCodes() });
 });
 
-// WIP
+// WIP - Scott
 router.get('/get-basic-hotel-media', async (req, res) => {
     res.json({ data: await callGetBasicHotelMedia() });
 });
 
-// WIP
+// WIP - Daniel
 router.get('/get-basic-hotel-media-by-location', async (req, res) => {
     res.json({ data: await callGetBasicHotelMediaByLocation() });
 });
 
-// WIP
+// WIP - Scott
 router.get('/get-basic-hotel-media-by-tour', async (req, res) => {
     res.json({ data: await callGetBasicHotelMediaByTour() });
 });
 
-// WIP
+// WIP - Daniel
 router.get('/get-hotel-media-by-city-and-tour-code', async (req, res) => {
     res.json({ data: await callGetHotelMediaByCityAndTourCode() });
 });
 
-// WIP
+// WIP - Scott
 router.get('/get-hotel-media-by-tour-code', async (req, res) => {
     res.json({ data: await callGetHotelMediaByTourCode() });
 });
@@ -81,27 +81,27 @@ router.get('/get-hotel-media-by-tour-code', async (req, res) => {
 ////////////// DEPARTURES ////////////////
 //////////////////////////////////////////
 
-// WIP
+// WIP - Daniel
 router.get('/get-departures-with-pricing', async (req, res) => {
     res.json({ data: await callGetDeparturesWithPricing() });
 });
 
-// WIP
+// WIP - Scott
 router.get('/get-departure-pricing', async (req, res) => {
     res.json({ data: await callGetDeparturePricing() });
 });
 
-// WIP
+// WIP - Daniel
 router.get('/get-departures', async (req, res) => {
     res.json({ data: await callGetDepartures() });
 });
 
-// WIP
+// WIP - Scott
 router.get('/get-departures-by-season', async (req, res) => {
     res.json({ data: await callGetDeparturesBySeason() });
 });
 
-// WIP
+// WIP - Daniel
 router.get('/get-group-departures', async (req, res) => {
     res.json({ data: await callGetGroupDepartures() });
 });
