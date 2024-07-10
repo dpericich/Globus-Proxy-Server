@@ -3,6 +3,7 @@ const router = expressGlobus.Router();
 // Endpoint Methods  
 const callGetHotelMedia = require('./globusEndpoints/getHotelMedia');
 const callGetAllHotelCodes = require('./globusEndpoints/getAllHotelCodes');
+const callGetAllAvailableTours = require('./globusEndpoints/getAllAvailableTours');
 
 
 // This controller will handle each of our Globus endpoints
@@ -15,7 +16,6 @@ const callGetAllHotelCodes = require('./globusEndpoints/getAllHotelCodes');
 //////////////// TOURS  //////////////////
 //////////////////////////////////////////
 
-// WIP - Daniel
 router.get('/get-all-available-tours', async (req, res) => {
     res.json({ data: await callGetAllAvailableTours() });
 });
