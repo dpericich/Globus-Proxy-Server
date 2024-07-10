@@ -1,0 +1,17 @@
+// Globus does not make their POST request params optional
+// this means that any SOAP Envelope > Body > Endpoint > Fields must be populated
+// otherwise you will get an error
+
+// This file will include param fields and test values to make the calls
+// TODO: We will need to review how we cache data and modify calls
+
+////////////////////////
+// FIELD_NAME = VALUE //
+////////////////////////
+
+hotelCode = HRMRAIL
+tourCode = 
+season = 
+brand = 
+mediaLanguage = 
+...
