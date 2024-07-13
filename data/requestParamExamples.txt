@@ -10,8 +10,9 @@
 ////////////////////////
 
 hotelCode = HRMRAIL
-tourCode = 
-season = 
-brand = 
+tourCode = AB | ...
+season = 2024 | 2025
+brand = Unknown | All | Globus | Cosmos | Avalon | Monograms
 mediaLanguage = 
+pricingModel = USA | Canada
 ...
