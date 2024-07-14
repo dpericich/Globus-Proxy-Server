@@ -13,6 +13,9 @@ hotelCode = HRMRAIL
 tourCode = AB | ...
 season = 2024 | 2025
 brand = Unknown | All | Globus | Cosmos | Avalon | Monograms
-mediaLanguage = 
+mediaLanguage = English | EnglishUK | EnglishCA
 pricingModel = USA | Canada
+country = United States
+city = Boston
+hotelName = Sheraton Boston Hotel
 ...
