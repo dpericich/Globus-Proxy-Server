@@ -4,11 +4,13 @@ const router = expressGlobus.Router();
 const callGetHotelMedia = require('./globusEndpoints/getHotelMedia');
 const callGetAllHotelCodes = require('./globusEndpoints/getAllHotelCodes');
 const callGetAllAvailableTours = require('./globusEndpoints/getAllAvailableTours');
+const callGetTourDayMediaByBrand = require('./globusEndpoints/getTourDayMediaByBrand');
+const callGetDeparturesWithPricing = require('./globusEndpoints/getDeparturesWithPricing');
 const callGetDepartures = require('./globusEndpoints/getDepartures');
 const callGetTourMediaByBrand = require('./globusEndpoints/getTourMediaByBrand');
 const callGetGroupDepartures = require('./globusEndpoints/getGroupDepartures');
 const callGetBasicHotelMediaByLocation = require('./globusEndpoints/getBasicHotelMediaByLocation');
-const callGetHotelMediaByCityAndTourCode = require('./globusEndpoints/getHotelMediaByCityAndTourCode')
+const callGetHotelMediaByCityAndTourCode = require('./globusEndpoints/getHotelMediaByCityAndTourCode');
 
 
 // This controller will handle each of our Globus endpoints
@@ -82,7 +84,6 @@ router.get('/get-hotel-media-by-tour-code', async (req, res) => {
 ////////////// DEPARTURES ////////////////
 //////////////////////////////////////////
 
-// WIP - Daniel
 router.get('/get-departures-with-pricing', async (req, res) => {
     res.json({ data: await callGetDeparturesWithPricing() });
 });
@@ -101,7 +102,7 @@ router.get('/get-departures-by-season', async (req, res) => {
     res.json({ data: await callGetDeparturesBySeason() });
 });
 
-// WIP - Daniel
+// This call is broken
 router.get('/get-group-departures', async (req, res) => {
     res.json({ data: await callGetGroupDepartures() });
 });
