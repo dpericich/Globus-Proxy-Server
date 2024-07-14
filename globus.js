@@ -6,6 +6,7 @@ const callGetAllHotelCodes = require('./globusEndpoints/getAllHotelCodes');
 const callGetAllAvailableTours = require('./globusEndpoints/getAllAvailableTours');
 const callGetDepartures = require('./globusEndpoints/getDepartures');
 const callGetTourMediaByBrand = require('./globusEndpoints/getTourMediaByBrand');
+const callGetGroupDepartures = require('./globusEndpoints/getGroupDepartures')
 
 
 // This controller will handle each of our Globus endpoints
@@ -27,7 +28,6 @@ router.get('/get-tour-day-media', async (req, res) => {
     res.json({ data: await callGetTourDayMedia() });
 });
 
-// WIP - Daniel
 router.get('/get-tour-day-media-by-brand', async (req, res) => {
     res.json({ data: await callGetTourDayMediaByBrand() });
 });
