@@ -6,7 +6,8 @@ const callGetAllHotelCodes = require('./globusEndpoints/getAllHotelCodes');
 const callGetAllAvailableTours = require('./globusEndpoints/getAllAvailableTours');
 const callGetDepartures = require('./globusEndpoints/getDepartures');
 const callGetTourMediaByBrand = require('./globusEndpoints/getTourMediaByBrand');
-const callGetGroupDepartures = require('./globusEndpoints/getGroupDepartures')
+const callGetGroupDepartures = require('./globusEndpoints/getGroupDepartures');
+const callGetBasicHotelMediaByLocation = require('./globusEndpoints/getBasicHotelMediaByLocation');
 
 
 // This controller will handle each of our Globus endpoints
