@@ -10,7 +10,7 @@
 ////////////////////////
 
 hotelCode = HRMRAIL
-tourCode = AB | ...
+tourCode = AB | AAE | 1000 | 10002
 season = 2024 | 2025
 brand = Unknown | All | Globus | Cosmos | Avalon | Monograms
 mediaLanguage = English | EnglishUK | EnglishCA
@@ -18,4 +18,5 @@ pricingModel = USA | Canada
 country = United States
 city = Boston
 hotelName = Sheraton Boston Hotel
+departureCode - having trouble here. I clearly see "departureCode" in some of the returns (i.e. getDeparturesBySeason) however the param does not want to work
 ...
