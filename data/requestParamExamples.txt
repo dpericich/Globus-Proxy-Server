@@ -1,0 +1,21 @@
+// Globus does not make their POST request params optional
+// this means that any SOAP Envelope > Body > Endpoint > Fields must be populated
+// otherwise you will get an error
+
+// This file will include param fields and test values to make the calls
+// TODO: We will need to review how we cache data and modify calls
+
+////////////////////////
+// FIELD_NAME = VALUE //
+////////////////////////
+
+hotelCode = HRMRAIL
+tourCode = AB | ...
+season = 2024 | 2025
+brand = Unknown | All | Globus | Cosmos | Avalon | Monograms
+mediaLanguage = English | EnglishUK | EnglishCA
+pricingModel = USA | Canada
+country = United States
+city = Boston
+hotelName = Sheraton Boston Hotel
+...

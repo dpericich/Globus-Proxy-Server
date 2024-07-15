@@ -3,13 +3,17 @@ const router = expressGlobus.Router()
 // Endpoint Methods
 const callGetHotelMedia = require('./globusEndpoints/getHotelMedia')
 const callGetAllHotelCodes = require('./globusEndpoints/getAllHotelCodes')
-const callGetTourMedia = require('./globusEndpoints/getTourMedia')
-const callGetTourDayMedia = require('./globusEndpoints/getTourDayMedia')
+const callGetAllAvailableTours = require('./globusEndpoints/getAllAvailableTours')
+const callGetTourDayMediaByBrand = require('./globusEndpoints/getTourDayMediaByBrand')
+const callGetDeparturesWithPricing = require('./globusEndpoints/getDeparturesWithPricing')
+const callGetDepartures = require('./globusEndpoints/getDepartures')
+const callGetTourMediaByBrand = require('./globusEndpoints/getTourMediaByBrand')
+const callGetGroupDepartures = require('./globusEndpoints/getGroupDepartures')
+const callGetBasicHotelMediaByLocation = require('./globusEndpoints/getBasicHotelMediaByLocation')
+const callGetHotelMediaByCityAndTourCode = require('./globusEndpoints/getHotelMediaByCityAndTourCode')
 const callGetBasicHotelMedia = require('./globusEndpoints/getBasicHotelMedia')
 const callGetBasicHotelMediaByTour = require('./globusEndpoints/getBasicHotelMediaByTour')
 const callGetHotelMediaByTourCode = require('./globusEndpoints/getHotelMediaByTourCode')
-const callGetDeparturePricing = require('./globusEndpoints/getDeparturePricing')
-const callGetDeparturesBySeason = require('./globusEndpoints/getDeparturesBySeason')
 
 // This controller will handle each of our Globus endpoints
 
@@ -20,7 +24,6 @@ const callGetDeparturesBySeason = require('./globusEndpoints/getDeparturesBySeas
 //////////////// TOURS  //////////////////
 //////////////////////////////////////////
 
-// WIP - Daniel
 router.get('/get-all-available-tours', async (req, res) => {
   res.json({ data: await callGetAllAvailableTours() })
 })
@@ -30,7 +33,6 @@ router.get('/get-tour-day-media', async (req, res) => {
   res.json({ data: await callGetTourDayMedia() })
 })
 
-// WIP - Daniel
 router.get('/get-tour-day-media-by-brand', async (req, res) => {
   res.json({ data: await callGetTourDayMediaByBrand() })
 })
@@ -40,7 +42,6 @@ router.get('/get-tour-media', async (req, res) => {
   res.json({ data: await callGetTourMedia() })
 })
 
-// WIP - Daniel
 router.get('/get-tour-media-by-brand', async (req, res) => {
   res.json({ data: await callGetTourMediaByBrand() })
 })
@@ -62,7 +63,6 @@ router.get('/get-basic-hotel-media', async (req, res) => {
   res.json({ data: await callGetBasicHotelMedia() })
 })
 
-// WIP - Daniel
 router.get('/get-basic-hotel-media-by-location', async (req, res) => {
   res.json({ data: await callGetBasicHotelMediaByLocation() })
 })
@@ -72,7 +72,6 @@ router.get('/get-basic-hotel-media-by-tour', async (req, res) => {
   res.json({ data: await callGetBasicHotelMediaByTour() })
 })
 
-// WIP - Daniel
 router.get('/get-hotel-media-by-city-and-tour-code', async (req, res) => {
   res.json({ data: await callGetHotelMediaByCityAndTourCode() })
 })
@@ -86,7 +85,6 @@ router.get('/get-hotel-media-by-tour-code', async (req, res) => {
 ////////////// DEPARTURES ////////////////
 //////////////////////////////////////////
 
-// WIP - Daniel
 router.get('/get-departures-with-pricing', async (req, res) => {
   res.json({ data: await callGetDeparturesWithPricing() })
 })
@@ -96,7 +94,6 @@ router.get('/get-departure-pricing', async (req, res) => {
   res.json({ data: await callGetDeparturePricing() })
 })
 
-// WIP - Daniel
 router.get('/get-departures', async (req, res) => {
   res.json({ data: await callGetDepartures() })
 })
@@ -106,7 +103,7 @@ router.get('/get-departures-by-season', async (req, res) => {
   res.json({ data: await callGetDeparturesBySeason() })
 })
 
-// WIP - Daniel
+// This call is broken
 router.get('/get-group-departures', async (req, res) => {
   res.json({ data: await callGetGroupDepartures() })
 })
