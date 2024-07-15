@@ -1,3 +1,6 @@
+// DEPARTURE CODE - 100040721 or AAE40830 ????
+// Tour code - 1000, AB, AAE
+
 const convert = require('xml-js')
 const fetchSOAP = require('../utils/xmlReqMethod')
 
@@ -10,34 +13,34 @@ const call = async xmlBody => {
       let result = convert.xml2json(data, options)
       let jsonData = JSON.parse(result)
       console.log(
-        'This shit right here....',
-        jsonData['soap:Envelope']['soap:Body']['GetHotelMediaResponse'][
-          'GetHotelMediaResult'
-        ]
+        jsonData['soap:Envelope']['soap:Body'][
+          'GetBasicHotelMediaByTourResponse'
+        ]['GetBasicHotelMediaByTourResult']
       )
-      // console.log(
-      //   'AND this SHIT....',
-      //   jsonData['soap:Envelope']['soap:Body']['GetHotelMediaResponse'][
-      //     'GetHotelMediaResult'
-      //   ]['HotelImages']['HotelImage']
-      // )
-      return jsonData['soap:Envelope']['soap:Body']['GetHotelMediaResponse'][
-        'GetHotelMediaResult'
-      ]
+
+      return jsonData['soap:Envelope']['soap:Body'][
+        'GetBasicHotelMediaByTourResponse'
+      ]['GetBasicHotelMediaByTourResult']
     })
 
   // TODO: Will have a method to turn the JSON SOAP response to JSON for the Client
   // formatJSON();
+  // return serializeGetBasicHotelMediaByTour(unformattedJSON)
   return unformattedJSON
 }
 
-const callGetHotelMedia = async () => {
+// const serializeGetBasicHotelMediaByTour = data => {
+//   return data?.map(el => el['_text'])
+// }
+
+const callGetBasicHotelMediaByTour = async () => {
   const xmlBody = `<?xml version="1.0" encoding="utf-8"?>
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
-    <GetHotelMedia xmlns="http://webapi.globusandcosmos.com/">
-      <hotelCode>HRMRAIL</hotelCode>
-    </GetHotelMedia>
+    <GetBasicHotelMediaByTour xmlns="http://webapi.globusandcosmos.com/">
+      <tourCode>AB</tourCode>
+      <departure>100040721</departure>
+    </GetBasicHotelMediaByTour>
   </soap:Body>
 </soap:Envelope>`
 
@@ -46,4 +49,4 @@ const callGetHotelMedia = async () => {
   return data
 }
 
-module.exports = callGetHotelMedia
+module.exports = callGetBasicHotelMediaByTour
