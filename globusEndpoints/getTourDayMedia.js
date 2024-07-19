@@ -33,7 +33,7 @@ const callGetTourDayMedia = async () => {
 <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
   <soap:Body>
     <GetTourDayMedia xmlns="http://webapi.globusandcosmos.com/">
-      <tourCode>1002</tourCode>
+      <tourCode>AAE</tourCode>
       <season>2025</season>
       <mediaLanguage>English</mediaLanguage>
     </GetTourDayMedia>
