@@ -9,6 +9,7 @@ const Navbar = () => {
       </div>
       <div className="md:col-span-2 flex justify-center items-center gap-2">
         <Link to="/">Home</Link>
+        <Link to="/available-tours">Tours</Link>
       </div>
     </div>
   )
