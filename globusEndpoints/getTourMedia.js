@@ -4,13 +4,13 @@ const VACA_OVERVIEW = 'Vacation Overview'
 const LENGTH_BANNER = 'Length Banner'
 const MEALS = 'Meals'
 const SMALL_GROUP = 'Small Group'
-// const VACA_ITINERARY = 'Vacation Itinerary'
+const VACA_ITINERARY = 'Vacation Itinerary'
 const acceptedTypes = [
   LENGTH_BANNER,
   VACA_OVERVIEW,
   MEALS,
   SMALL_GROUP,
-  // VACA_ITINERARY,
+  VACA_ITINERARY
 ]
 
 const call = async xmlBody => {
@@ -21,25 +21,44 @@ const call = async xmlBody => {
       let result = convert.xml2json(data, options)
       let jsonData = JSON.parse(result)
 
-      return jsonData['soap:Envelope']['soap:Body']['GetTourMediaResponse'][
+      const tourMediaData = jsonData['soap:Envelope']['soap:Body']['GetTourMediaResponse'][
         'GetTourMediaResult'
-      ]['diffgr:diffgram']['NewDataSet']['TourMedia']
-      // ]['diffgr:diffgram']['NewDataSet']['DayMedia']
-    })
-  // console.log('This is unformattedJSON', unformattedJSON)
-  // return unformattedJSON
+      ]['diffgr:diffgram']['NewDataSet']['TourMedia'];
+
+
+      const dayMediaData = jsonData['soap:Envelope']['soap:Body']['GetTourMediaResponse'][
+        'GetTourMediaResult'
+      ]['diffgr:diffgram']['NewDataSet']['DayMedia'];
+
+      return {
+        tourMediaData,
+        dayMediaData
+      };
+    });
+
   return serializeGetTourMedia(unformattedJSON)
 }
 
 const serializeGetTourMedia = data => {
   let newHash = {}
-  data.forEach(record => {
+  // Retrive the Tour Data
+  data["tourMediaData"].forEach(record => {
     // console.log('This is the record', record['ContentType']['_text'])
     if (acceptedTypes.find(item => item === record['ContentType']['_text'])) {
       newHash[record['ContentType']['_text']] = record['Content']['_text']
-    }
-  })
-  console.log('THIS', newHash)
+    };
+  });
+
+  // Retrive the Itinerary Data
+  newHash['Itinerary'] = [];
+  data["dayMediaData"].forEach(record => {
+    if (record['ContentType']['_text'] === VACA_ITINERARY) {
+      newHash['Itinerary'].push(record["Content"]["_text"]);
+    };
+  });
+
+  // Scott => Remove this code once you have integrated the Itinerary in the FE
+  console.log(newHash)
 
   return newHash
 }
