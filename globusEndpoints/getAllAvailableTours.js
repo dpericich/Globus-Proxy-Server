@@ -22,6 +22,7 @@ const serializeGetAllAvailableTours = (data) => {
         newHash["TourNumber"] = record["TourNumber"]["_text"];
         newHash["Brand"] = record["Brand"]["_text"];
         newHash["Name"] = record["Name"]["_text"];
+        newHash["CoverImage"] = `https://images.globusfamily.com/vacation/${record["TourNumber"]["_text"]}.jpg`;
 
         return newHash;
     });
