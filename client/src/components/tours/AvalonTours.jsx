@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import SearchInput from '../SearchInput'
+import SearchBar from '../SearchBar'
 import Loading from '../Loading'
 import TourCard from './TourCard'
 
@@ -19,7 +19,7 @@ const AvalonTours = () => {
   return (
     <div className="flex flex-col">
       <div className="flex justify-center mb-5">
-        <SearchInput search={search} setSearch={setSearch} />
+        <SearchBar search={search} setSearch={setSearch} />
       </div>
 
       {data === null ? (

@@ -1,9 +1,9 @@
 const SearchBar = ({ search, setSearch }) => {
   return (
-    <div className="bg-sky-800 flex justify-start p-3">
+    <div className="bg-sky-800 flex justify-start p-3 w-[100%]">
       <form
         onSubmit={e => e.preventDefault()}
-        className="flex justify-start w-[100%]"
+        className="flex justify-start w-[30%]"
       >
         <input
           id="search"
