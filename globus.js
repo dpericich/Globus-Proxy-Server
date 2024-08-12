@@ -40,8 +40,9 @@ router.get('/get-tour-day-media-by-brand', async (req, res) => {
 })
 
 // WIP - Scott
-router.get('/get-tour-media', async (req, res) => {
-  res.json({ data: await callGetTourMedia() })
+router.post('/get-tour-media', async (req, res) => {
+  // res.json({ data: await callGetTourMedia() })
+  res.json({ data: await callGetTourMedia(req.body.tourNumber) })
 })
 
 router.get('/get-tour-media-by-brand', async (req, res) => {
