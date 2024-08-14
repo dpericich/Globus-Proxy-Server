@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import Loading from '../Loading'
-import TourDetailsOverview from './TourDetailsOverview'
-import ItineraryCard from './ItineraryCard'
+import DetailsOverview from './DetailsOverview'
+import DetailsItinerary from './DetailsItinerary'
 
 const TourMediaDetails = () => {
   const [selectedTour, setSelectedTour] = useState(null)
@@ -33,7 +33,7 @@ const TourMediaDetails = () => {
         <>
           <div className="flex flex-col gap-4 justify-start items-start shadow-md shadow-zinc-300 rounded-xl pb-5">
             {/* ----------- Top Banner Content ---------- */}
-            <TourDetailsOverview selectedTour={selectedTour} id={id} />
+            <DetailsOverview selectedTour={selectedTour} id={id} />
 
             {/* ----------- Itinerary ---------- */}
             <div className="flex flex-col w-[100%] px-5">
@@ -48,7 +48,7 @@ const TourMediaDetails = () => {
 
               {expand ? (
                 <>
-                  <ItineraryCard selectedTour={selectedTour} />
+                  <DetailsItinerary selectedTour={selectedTour} />
                 </>
               ) : (
                 <span></span>
