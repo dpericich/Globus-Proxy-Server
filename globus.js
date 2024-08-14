@@ -42,6 +42,7 @@ router.get('/get-tour-day-media-by-brand', async (req, res) => {
 // WIP - Scott
 router.post('/get-tour-media', async (req, res) => {
   // res.json({ data: await callGetTourMedia() })
+  console.log('This is the res______', res)
   res.json({ data: await callGetTourMedia(req.body.tourNumber) })
 })
 

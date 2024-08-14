@@ -11,18 +11,18 @@ const brandLinks = [
 
 const Banner = () => {
   return (
-    <div className="h-[100vh]">
+    <div className="h-[100vh] bg-white">
       <div className='bg-center bg-cover bg-[url("/public/ocean.jpg")] h-[40%] rounded-md'>
         <div className="bg-black/50 h-[100%] w-[100%] flex flex-col justify-center items-center rounded-md">
           <div className="flex justify-center py-20 w-[100%] h-[40%] ">
-            <p className="text-7xl text-white font-sans text-shadow-lg">
+            <p className="text-7xl text-white font-sans text-shadow-lg animate-fadin">
               TOUR PORTAL
             </p>
           </div>
 
           <div className="flex flex-col justify-center items-center gap-4 w-[100%] h-[40%]">
             <Link to="/available-tours" className="w-[100%]">
-              <button className="border-4 rounded-md p-3 text-white bg-transparent w-[50%] hover:bg-white/60 hover:scale-105 transition-all text-3xl animate-slidedown700">
+              <button className="border-4 rounded-md p-3 text-white bg-transparent w-[50%] hover:bg-white/60 hover:scale-105 transition-all text-3xl animate-fadin">
                 ALL AVAILABLE TOURS
               </button>
             </Link>
@@ -33,7 +33,7 @@ const Banner = () => {
                 <div className="flex justify-center items-center">
                   <img
                     src={item.image}
-                    className="h-[30px] w-[150px] hover:scale-105 transition-all"
+                    className="h-[30px] w-[150px] hover:scale-105 transition-all animate-fadin"
                   ></img>
                 </div>
               </Link>
