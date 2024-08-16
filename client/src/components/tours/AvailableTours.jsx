@@ -12,7 +12,7 @@ const AvailableTours = () => {
     fetch('http://localhost:8000/api/v1/globus/get-all-available-tours')
       .then(res => res.json())
       .then(res => setData(res.data))
-    // console.log('This...', data)
+    console.log('This...', data)
   }, [])
 
   // render Loading while 'null', else checks for search state and renders based off that
@@ -39,7 +39,6 @@ const AvailableTours = () => {
             </>
           ) : (
             <>
-              {/* /////////// RENDERS BY FILTERING SEARCH STATE ////////// */}
               {data
                 .filter(tour =>
                   tour.Name.toLowerCase().includes(search.toLowerCase())

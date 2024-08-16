@@ -6,7 +6,7 @@ import ItineraryCard from './ItineraryCard'
 
 const TourMediaDetails = () => {
   const [selectedTour, setSelectedTour] = useState(null)
-  const [expand, setExpand] = useState(false)
+
   const { id } = useParams()
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const TourMediaDetails = () => {
   }, [])
 
   return (
-    <div className="p-10">
+    <div className="py-3">
       {selectedTour === null ? (
         <span>
           <Loading />
@@ -37,22 +37,10 @@ const TourMediaDetails = () => {
 
             {/* ----------- Itinerary ---------- */}
             <div className="flex flex-col w-[100%] px-5">
-              <div className={`${expand ? 'invisible' : 'visible'}`}>
-                <button
-                  className={`border-4 border-sky-700 text-sky-700 p-3 rounded-md hover:bg-zinc-500 hover:text-white w-[50%] hover:scale-105  transition-all`}
-                  onClick={() => setExpand(!expand)}
-                >
-                  VIEW ITINERARY
-                </button>
-              </div>
-
-              {expand ? (
-                <>
-                  <ItineraryCard selectedTour={selectedTour} />
-                </>
-              ) : (
-                <span></span>
-              )}
+              <p className="font-semibold text-zinc-500 text-left mt-4 mb-1 text-2xl font-serif animate-fadin">
+                ITINERARY
+              </p>
+              <ItineraryCard selectedTour={selectedTour} />
             </div>
           </div>
         </>
