@@ -6,26 +6,27 @@ const TourDetailsOverview = ({ selectedTour, id }) => {
   return (
     <>
       {/* ------------- Title Banner ---------- */}
-      <div className="flex flex-col justify-center items-center bg-sky-700 p-3 rounded w-[100%] h-[80px]">
-        <p className="text-3xl text-white font-bold px-2 font-serif">
+      <div className="flex flex-col justify-center items-center bg-sky-800 p-3 rounded w-[100%] h-[80px]">
+        <p className="text-lg md:text-3xl text-white px-2 font-sans">
           {selectedTour.data['Length Banner']}
         </p>
       </div>
       {/* ------------- Main Content Row ---------- */}
       <div className="grid grid-cols-1 md:grid-cols-3 w-[100%]">
         {/* ------------- Col 1 ---------- */}
-        <div className="col-span-2 p-5 text-left">
-          <p className="text-md text-zinc-700 font-semibold mb-3 italic">
-            Details
-          </p>
+        <div className="col-span-2 p-5 text-left animate-fadin">
           <p className="text-md mb-3">
-            <span className="text-xl font-semibold">Meals</span>
+            <span className="text-2xl text-zinc-500 font-semibold font-serif">
+              Meals
+            </span>
             <br></br>
 
             <span className="text-zinc-500">{selectedTour.data['Meals']}</span>
           </p>
-          <p className="font-semibold mt-4 mb-1 text-lg">Overview</p>
-          <p className="text-sm text-zinc-500">
+          <p className="font-semibold text-zinc-500 mt-4 mb-1 text-2xl font-serif">
+            Overview
+          </p>
+          <p className="text-sm md:text-md text-zinc-500">
             {selectedTour.data['Vacation Overview']}
           </p>
         </div>

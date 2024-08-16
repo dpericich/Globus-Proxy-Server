@@ -35,8 +35,6 @@ const AvalonTours = () => {
                 <div key={i}>
                   <TourCard tour={tour} />
                 </div>
-
-                // </Link>
               ))}
             </>
           ) : (
@@ -50,8 +48,6 @@ const AvalonTours = () => {
                   <div key={i}>
                     <TourCard tour={tour} />
                   </div>
-
-                  // </Link>
                 ))}
             </>
           )}
