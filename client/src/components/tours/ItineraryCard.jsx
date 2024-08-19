@@ -1,4 +1,10 @@
 const ItineraryCard = ({ selectedTour }) => {
+  console.log(
+    'this is the image',
+    `https://images.globusfamily.com/vacation/
+    ${selectedTour.data.Itinerary[0].split('dayimage>')[1].split('</SPAN>')[0]}
+  `
+  )
   return (
     <>
       <div className="flex flex-col text-left">
@@ -26,12 +32,12 @@ const ItineraryCard = ({ selectedTour }) => {
               }}
             ></p>
 
-            {/* <img
-                    src={`https://images.globusfamily.com/vacation/${
-                      item.split('dayimage>')[1].split('</SPAN>')[0]
-                    }}`}
-                    className="h-30 w-30"
-                  ></img> */}
+            <img
+              src={`https://images.globusfamily.com/vacation/${
+                item.split('dayimage>')[1].split('</SPAN>')[0]
+              }}`}
+              className="h-[300px] w-[300px]"
+            ></img>
           </div>
         ))}
       </div>

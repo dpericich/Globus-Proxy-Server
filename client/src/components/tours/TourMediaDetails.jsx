@@ -3,9 +3,11 @@ import { useParams } from 'react-router-dom'
 import Loading from '../Loading'
 import TourDetailsOverview from './TourDetailsOverview'
 import ItineraryCard from './ItineraryCard'
+import Modal from './Modal'
 
 const TourMediaDetails = () => {
   const [selectedTour, setSelectedTour] = useState(null)
+  const [open, setOpen] = useState(false)
 
   const { id } = useParams()
 
@@ -33,7 +35,11 @@ const TourMediaDetails = () => {
         <>
           <div className="flex flex-col gap-4 justify-start items-start shadow-md shadow-zinc-300 rounded-xl pb-5">
             {/* ----------- Top Banner Content ---------- */}
-            <TourDetailsOverview selectedTour={selectedTour} id={id} />
+            <TourDetailsOverview
+              selectedTour={selectedTour}
+              id={id}
+              setOpen={() => setOpen(!open)}
+            />
 
             {/* ----------- Itinerary ---------- */}
             <div className="flex flex-col w-[100%] px-5">
@@ -47,6 +53,11 @@ const TourMediaDetails = () => {
       ) : (
         <span></span>
       )}
+      <Modal
+        open={open}
+        onClose={() => setOpen(!open)}
+        selectedTour={selectedTour}
+      />
     </div>
   )
 }
