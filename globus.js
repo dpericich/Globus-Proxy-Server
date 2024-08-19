@@ -27,27 +27,50 @@ const callGetHotelMediaByTourCode = require('./globusEndpoints/getHotelMediaByTo
 //////////////////////////////////////////
 
 router.get('/get-all-available-tours', async (req, res) => {
-  res.json({ data: await callGetAllAvailableTours() })
+  try {
+    const data = await callGetAllAvailableTours();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 // WIP - Scott
 router.get('/get-tour-day-media', async (req, res) => {
-  res.json({ data: await callGetTourDayMedia() })
+  try {
+    const data = await callGetTourDayMedia();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Error", error: e });
+  };
 })
 
 router.get('/get-tour-day-media-by-brand', async (req, res) => {
-  res.json({ data: await callGetTourDayMediaByBrand() })
+  try {
+    const data = await callGetTourDayMediaByBrand();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Error", error: e });
+  };
 })
 
 // WIP - Scott
 router.post('/get-tour-media', async (req, res) => {
-  // res.json({ data: await callGetTourMedia() })
-  console.log('This is the res______', res)
-  res.json({ data: await callGetTourMedia(req.body.tourNumber) })
+  try {
+    const data = await callGetTourMedia(req.body.tourNumber)
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Error", error: e });
+  };
 })
 
 router.get('/get-tour-media-by-brand', async (req, res) => {
-  res.json({ data: await callGetTourMediaByBrand() })
+  try {
+    const data = await callGetTourMediaByBrand();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 //////////////////////////////////////////
@@ -55,34 +78,69 @@ router.get('/get-tour-media-by-brand', async (req, res) => {
 //////////////////////////////////////////
 
 router.get('/get-hotel-media', async (req, res) => {
-  res.json({ data: await callGetHotelMedia() })
+  try {
+    const data = await callGetHotelMedia();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 router.get('/get-all-hotel-codes', async (req, res) => {
-  res.json({ data: await callGetAllHotelCodes() })
+  try {
+    const data = await callGetAllHotelCodes();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 // WIP - Scott
 router.get('/get-basic-hotel-media', async (req, res) => {
-  res.json({ data: await callGetBasicHotelMedia() })
+  try {
+    const data = await callGetBasicHotelMedia();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 router.get('/get-basic-hotel-media-by-location', async (req, res) => {
-  res.json({ data: await callGetBasicHotelMediaByLocation() })
+  try {
+    const data = await callGetBasicHotelMediaByLocation();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 // WIP - Scott
 router.get('/get-basic-hotel-media-by-tour', async (req, res) => {
-  res.json({ data: await callGetBasicHotelMediaByTour() })
+  try {
+    const data = await callGetBasicHotelMediaByTour();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 router.get('/get-hotel-media-by-city-and-tour-code', async (req, res) => {
-  res.json({ data: await callGetHotelMediaByCityAndTourCode() })
+  try {
+    const data = await callGetHotelMediaByCityAndTourCode();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 // WIP - Scott
 router.get('/get-hotel-media-by-tour-code', async (req, res) => {
-  res.json({ data: await callGetHotelMediaByTourCode() })
+  try {
+    const data = await callGetHotelMediaByTourCode();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 //////////////////////////////////////////
@@ -90,26 +148,51 @@ router.get('/get-hotel-media-by-tour-code', async (req, res) => {
 //////////////////////////////////////////
 
 router.get('/get-departures-with-pricing', async (req, res) => {
-  res.json({ data: await callGetDeparturesWithPricing() })
+  try {
+    const data = await callGetDeparturesWithPricing();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 // WIP - Scott
 router.get('/get-departure-pricing', async (req, res) => {
-  res.json({ data: await callGetDeparturePricing() })
+  try {
+    const data = await callGetDeparturePricing();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 router.get('/get-departures', async (req, res) => {
-  res.json({ data: await callGetDepartures() })
+  try {
+    const data = await callGetDepartures();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 // WIP - Scott
 router.get('/get-departures-by-season', async (req, res) => {
-  res.json({ data: await callGetDeparturesBySeason() })
+  try {
+    const data = await callGetDeparturesBySeason();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 // This call is broken
 router.get('/get-group-departures', async (req, res) => {
-  res.json({ data: await callGetGroupDepartures() })
+  try {
+    const data = await callGetGroupDepartures();
+    res.status(200).json({ data });
+  } catch (e) {
+    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+  }
 })
 
 //////////////////////////////////
