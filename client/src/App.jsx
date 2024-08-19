@@ -6,6 +6,8 @@ import AvailableTours from './components/tours/AvailableTours'
 import TourMediaDetails from './components/tours/TourMediaDetails'
 import GlobusTours from './components/tours/GlobusTours'
 import CosmosTours from './components/tours/Cosmos'
+import ThankYou from './pages/ThankYou'
+import NotFound from './pages/NotFound'
 
 function App() {
   return (
@@ -18,6 +20,8 @@ function App() {
           <Route path="/globus-tours" element={<GlobusTours />} />
           <Route path="/avalon-tours" element={<AvailableTours />} />
           <Route path="/cosmos-tours" element={<CosmosTours />} />
+          <Route path="/thank-you" element={<ThankYou />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </>

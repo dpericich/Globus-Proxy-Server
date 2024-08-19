@@ -1,8 +1,4 @@
-import { useState } from 'react'
-import Modal from './Modal'
-
-const TourDetailsOverview = ({ selectedTour, id }) => {
-  const [open, setOpen] = useState(false)
+const TourDetailsOverview = ({ selectedTour, id, setOpen }) => {
   return (
     <>
       {/* ------------- Title Banner ---------- */}
@@ -36,20 +32,15 @@ const TourDetailsOverview = ({ selectedTour, id }) => {
             src={`https://images.globusfamily.com/vacation/${id}.jpg`}
             className="h-[80%] rounded-md shadow-md"
           ></img>
-          {/* -------- Contact Button --------- */}
-          <button
-            onClick={() => setOpen(!open)}
-            className="bg-sky-700 text-white p-3 rounded-md my-4 w-[90%] hover:bg-zinc-900 hover:border-white hover:scale-105 transition-all"
-          >
-            CONNECT
-          </button>
         </div>
-        {/* -------- Contact Modal --------- */}
-        <Modal
-          open={open}
-          onClose={() => setOpen(!open)}
-          selectedTour={selectedTour}
-        />
+      </div>
+      <div className="flex px-5 w-[100%]">
+        <button
+          onClick={setOpen}
+          className="bg-sky-700 text-white p-3 rounded-md my-4 w-[100%] md:w-[35%]  hover:bg-zinc-900 hover:border-white hover:scale-105 transition-all"
+        >
+          CONNECT
+        </button>
       </div>
     </>
   )
