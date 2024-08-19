@@ -57,9 +57,6 @@ const serializeGetTourMedia = data => {
     };
   });
 
-  // Scott => Remove this code once you have integrated the Itinerary in the FE
-  console.log(newHash)
-
   return newHash
 }
 
