@@ -1,7 +1,7 @@
 import TourDetailsOverview from './TourDetailsOverview'
 import ItineraryCard from './ItineraryCard'
 
-const Success = ({ selectedTour, setOpen, id }) => {
+const Success = ({ selectedTour, setOpen, open, id }) => {
   return (
     <>
       <div className="flex flex-col gap-4 justify-start items-start shadow-md shadow-zinc-300 rounded-xl pb-5">
