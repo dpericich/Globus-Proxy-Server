@@ -8,7 +8,7 @@ const Failed = () => {
           <div className="flex flex-col justify-center items-center p-3 w-[100%] h-[30%] text-white">
             <p className="text-7xl font-sans text-shadow-lg">FAILED!</p>
             <p>One of our team members will connect with you shortly!</p>
-            <Link to="/tours">Back to Tours</Link>
+            <Link to="/">Back to Tours</Link>
           </div>
         </div>
       </div>
