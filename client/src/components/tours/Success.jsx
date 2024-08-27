@@ -13,10 +13,7 @@ const Success = ({ selectedTour, setOpen, open, id }) => {
         />
 
         {/* ----------- Itinerary ---------- */}
-        <div className="flex flex-col w-[100%] px-5">
-          <p className="font-semibold text-zinc-500 text-left mt-4 mb-1 text-2xl font-serif animate-fadin">
-            ITINERARY
-          </p>
+        <div className="flex flex-col w-[100%] p-3 bg-zinc-100">
           <ItineraryCard selectedTour={selectedTour} />
         </div>
       </div>

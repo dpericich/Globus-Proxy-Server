@@ -21,6 +21,7 @@ function App() {
           <Route path="/avalon-tours" element={<AvailableTours />} />
           <Route path="/cosmos-tours" element={<CosmosTours />} />
           <Route path="/thank-you" element={<ThankYou />} />
+
           <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>

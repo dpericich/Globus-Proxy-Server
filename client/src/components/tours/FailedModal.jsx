@@ -3,8 +3,9 @@ import { useNavigate } from 'react-router-dom'
 // const Lambda_URL =
 //   'https://akxkf4hwkh5gntryfwrqsvfyve0ixlro.lambda-url.us-west-2.on.aws/'
 
-const Modal = ({ open, onClose, selectedTour }) => {
+const Modal = ({ open, setOpen }) => {
   const navigate = useNavigate()
+  // const [open, setOpen] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
@@ -15,7 +16,6 @@ const Modal = ({ open, onClose, selectedTour }) => {
   const handleSubmit = e => {
     e.stopPropagation()
     const data = {
-      tour: selectedTour?.data['Length Banner'],
       name,
       email,
       phone,
@@ -60,7 +60,7 @@ const Modal = ({ open, onClose, selectedTour }) => {
       >
         <div className="flex justify-end w-[100%]">
           <button
-            onClick={onClose}
+            onClick={() => setOpen(!open)}
             className="border-2 border-transparent bg-sky-600 text-white p-3 rounded-md hover:bg-zinc-900 hover:border-white hover:scale-105 transition-all"
           >
             X
@@ -68,11 +68,8 @@ const Modal = ({ open, onClose, selectedTour }) => {
         </div>
 
         <div className="flex flex-col gap-4 w-[100%]">
-          <p className="text-lg md:text-2xl font-semibold font-sans my-5">
-            {selectedTour?.data['Length Banner']}
-          </p>
           <p className="text-3xl md:text-5xl text-sky-700 font-bold font-serif">
-            Interested in this package?
+            How can we help?
           </p>
 
           <p className="text-xl italic">Connect with our team!</p>
@@ -115,7 +112,7 @@ const Modal = ({ open, onClose, selectedTour }) => {
               />
 
               <textarea
-                placeholder="Comments"
+                placeholder="What kind of trip are you looking for?"
                 className="shadow-inner shadow-zinc-300 rounded-md p-3"
                 onChange={e => setComments(e.target.value)}
               ></textarea>

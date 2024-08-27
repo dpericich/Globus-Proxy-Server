@@ -11,19 +11,19 @@ const TourDetailsOverview = ({ selectedTour, id, setOpen }) => {
       <div className="grid grid-cols-1 md:grid-cols-3 w-[100%]">
         {/* ------------- Col 1 ---------- */}
         <div className="col-span-2 p-5 text-left animate-fadin">
-          <p className="text-md mb-3">
+          <p className="font-semibold text-zinc-500 mt-4 mb-1 text-2xl font-serif">
+            Overview
+          </p>
+          <p className="text-sm md:text-md text-zinc-500">
+            {selectedTour.data['Vacation Overview']}
+          </p>
+          <p className="text-md mt-3">
             <span className="text-2xl text-zinc-500 font-semibold font-serif">
               Meals
             </span>
             <br></br>
 
             <span className="text-zinc-500">{selectedTour.data['Meals']}</span>
-          </p>
-          <p className="font-semibold text-zinc-500 mt-4 mb-1 text-2xl font-serif">
-            Overview
-          </p>
-          <p className="text-sm md:text-md text-zinc-500">
-            {selectedTour.data['Vacation Overview']}
           </p>
         </div>
         {/* ------------- Col 2 ---------- */}
