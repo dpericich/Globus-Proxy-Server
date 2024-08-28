@@ -10,12 +10,13 @@ const TourMediaDetails = () => {
   const { id } = useParams()
   const [selectedTour, setSelectedTour] = useState(null)
   const [open, setOpen] = useState(false)
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(true)
   const [isFailed, setIsFailed] = useState(false)
 
   useEffect(() => {
     try {
-      fetch('http://localhost:8000/api/v1/globus/get-tour-media', {
+      // fetch('http://localhost:8000/api/v1/globus/get-tour-media', {
+      fetch('https://globus.sldevtestdomain.com/api/v1/globus/get-tour-media', {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -24,12 +25,12 @@ const TourMediaDetails = () => {
       })
         .then(res => res.json())
         .then(res => {
-          setSelectedTour(res);
-          setIsLoading(false);
+          setSelectedTour(res)
+          setIsLoading(false)
         })
     } catch (e) {
-      setIsLoading(false);
-      setIsFailed(true);
+      setIsLoading(false)
+      setIsFailed(true)
     }
   }, [])
 
@@ -37,8 +38,15 @@ const TourMediaDetails = () => {
     <ErrorBoundryTours fallback={isLoading === false && <Failed />}>
       <div className="py-3">
         <div>
-          {isLoading === true ? < Loading /> : null}
-          {isLoading === false && <Success selectedTour={selectedTour} setOpen={setOpen} open={open} id={id} />}
+          {isLoading === true ? <Loading /> : null}
+          {isLoading === false && (
+            <Success
+              selectedTour={selectedTour}
+              setOpen={setOpen}
+              open={open}
+              id={id}
+            />
+          )}
         </div>
 
         <Modal

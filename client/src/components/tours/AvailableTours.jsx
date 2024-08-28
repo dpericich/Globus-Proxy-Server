@@ -9,7 +9,10 @@ const AvailableTours = () => {
 
   // useEffect calls fetch for data
   useEffect(() => {
-    fetch('http://localhost:8000/api/v1/globus/get-all-available-tours')
+    // fetch('http://localhost:8000/api/v1/globus/get-all-available-tours')
+    fetch(
+      'https://globus.sldevtestdomain.com/api/v1/globus/get-all-available-tours'
+    )
       .then(res => res.json())
       .then(res => setData(res.data))
     console.log('This...', data)

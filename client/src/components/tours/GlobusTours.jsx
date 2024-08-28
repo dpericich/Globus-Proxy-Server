@@ -9,7 +9,10 @@ const GlobusTours = () => {
 
   // useEffect calls fetch for data
   useEffect(() => {
-    fetch('http://localhost:8000/api/v1/globus/get-all-available-tours')
+    // fetch('http://localhost:8000/api/v1/globus/get-all-available-tours')
+    fetch(
+      'https://globus.sldevtestdomain.com/api/v1/globus/get-all-available-tours'
+    )
       .then(res => res.json())
       .then(res => setData(res.data.filter(item => item.Brand === 'GLOBUS')))
     console.log('This...', data)
@@ -27,16 +30,16 @@ const GlobusTours = () => {
           <Loading />
         </>
       ) : (
-        <>
+        <div className="">
           {/* /////////// IF SEARCH EMPTY RENDER ALL ////////// */}
           {search === '' ? (
-            <>
+            <div className="">
               {data.map((tour, i) => (
                 <div key={i}>
                   <TourCard tour={tour} />
                 </div>
               ))}
-            </>
+            </div>
           ) : (
             <>
               {/* /////////// RENDERS BY FILTERING SEARCH STATE ////////// */}
@@ -51,7 +54,7 @@ const GlobusTours = () => {
                 ))}
             </>
           )}
-        </>
+        </div>
       )}
     </div>
   )

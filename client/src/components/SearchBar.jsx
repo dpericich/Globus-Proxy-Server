@@ -3,16 +3,16 @@ const SearchBar = ({ search, setSearch }) => {
     <div className="bg-zinc-200 flex justify-start p-3 w-[100%]">
       <form
         onSubmit={e => e.preventDefault()}
-        className="flex justify-start w-[100%] md:w-[30%]"
+        className="flex justify-start w-[100%] md:w-[45%]"
       >
         <input
           id="search"
           type="text"
           role="searchbox"
-          placeholder="search tours"
+          placeholder="Search with tour keywords (California, London, Paris etc.)"
           value={search}
           onChange={e => setSearch(e.target.value)}
-          className="rounded-md py-1 px-3 w-[100%]"
+          className="text-xs md:text-sm rounded-md p-3 w-[100%]"
         />
       </form>
     </div>

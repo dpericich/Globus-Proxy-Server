@@ -15,7 +15,7 @@ const ItineraryCard = ({ selectedTour }) => {
           >
             {/* {item} */}
             {/* -------- TITLE -------- */}
-            <p className="text-zinc-500 text-2xl font-serif font-semibold">
+            <p className="text-zinc-800 text-2xl font-serif font-semibold">
               Day {i + 1}
             </p>
             <p

@@ -5,32 +5,32 @@ import FailedModal from './FailedModal'
 const Failed = () => {
   const [open, setOpen] = useState(false)
   return (
-    <div className="h-[100vh]">
-      <div className='bg-center bg-cover bg-[url("/public/ocean.jpg")] h-[50%] rounded-md shadow-inner shadow-black/60'>
-        <div className="bg-black/70 h-[100%] w-[100%] flex flex-col justify-center items-center rounded-md">
-          <div className="flex flex-col justify-center items-center p-3 w-[100%] h-[30%] text-white animate-fadin">
-            <p className="text-3xl font-sans text-shadow-lg">
-              We're sorry! This tour is not currently available
+    <div className="h-screen bg-white">
+      <div className='bg-center bg-cover bg-[url("/public/ocean.jpg")] h-[80%] md:h-[50%] md:rounded-md'>
+        <div className="bg-black/50 h-[100%] w-[100%] flex flex-col justify-center items-center md:rounded-md">
+          <div className="flex flex-col gap-8 justify-center items-center text-white w-[100%] h-[40%] md:h-[70%] md:px-10">
+            <p className="text-3xl md:text-6xl font-serif text-shadow-lg">
+              SORRY! THIS TOUR IS CURRENTLY UNAVAILABLE.
             </p>
+          </div>
 
-            <Link to="/tours" className="text-sky-300">
+          <div className="flex flex-col gap-4 justify-center items-center bg-black/40 p-3 w-[100%] h-[60%]">
+            <p className="text-white text-xl">
+              Connect with one of our team members to find the trip your're
+              looking for!
+            </p>
+            <button
+              onClick={setOpen}
+              className="bg-sky-600 text-white p-3 rounded-md w-[90%] md:w-[50%]  hover:bg-sky-500 hover:border-white hover:scale-105 transition-all"
+            >
+              LETS CONNECT!
+            </button>
+            <Link to="/" className="text-white text-xl mt-10">
               Back to Home
             </Link>
-            <div className="mt-5 text-lg">
-              <p>
-                Or connect with one of our team members to find the trip your're
-                looking for!
-              </p>
-              <button
-                onClick={setOpen}
-                className="bg-sky-700 text-white p-3 rounded-md my-4 w-[100%] md:w-[35%]  hover:bg-zinc-900 hover:border-white hover:scale-105 transition-all"
-              >
-                LETS CONNECT!
-              </button>
-            </div>
           </div>
-          <FailedModal setOpen={setOpen} open={open} />
         </div>
+        <FailedModal open={open} setOpen={setOpen} />
       </div>
     </div>
   )
