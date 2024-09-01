@@ -1,10 +1,20 @@
 const ItineraryCard = ({ selectedTour }) => {
-  console.log(
-    'this is the image',
-    `https://images.globusfamily.com/vacation/
-    ${selectedTour.data.Itinerary[0].split('dayimage>')[1].split('</SPAN>')[0]}
-  `
-  )
+  const itinerarySummary = (item) => {
+    let itineraryText = item
+      ?.split('<SPAN CLASS=subtitle>')[1]
+      ?.split('</SPAN>')[1]
+      ?.split('</BR>')[0]
+
+    if (itineraryText) {
+      return itineraryText;
+    }
+
+    return item
+      ?.split('<SPAN CLASS=location>')[1]
+      ?.split('</SPAN>')[1]
+      ?.split('</BR>')[0]
+  }
+
   return (
     <>
       <div className="flex flex-col text-left">
@@ -30,10 +40,7 @@ const ItineraryCard = ({ selectedTour }) => {
             <p
               className="text-md text-zinc-500"
               dangerouslySetInnerHTML={{
-                __html: item
-                  ?.split('<SPAN CLASS=subtitle>')[1]
-                  .split('</SPAN>')[1]
-                  .split('</BR>')[0],
+                __html: itinerarySummary(item)
               }}
             ></p>
           </div>
