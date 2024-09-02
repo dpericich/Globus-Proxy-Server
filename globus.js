@@ -28,48 +28,52 @@ const callGetHotelMediaByTourCode = require('./globusEndpoints/getHotelMediaByTo
 
 router.get('/get-all-available-tours', async (req, res) => {
   try {
-    const data = await callGetAllAvailableTours();
-    res.status(200).json({ data });
+    const data = await callGetAllAvailableTours()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
 // WIP - Scott
 router.get('/get-tour-day-media', async (req, res) => {
   try {
-    const data = await callGetTourDayMedia();
-    res.status(200).json({ data });
+    const data = await callGetTourDayMedia()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Error", error: e });
-  };
+    res.status(500).json({ message: 'Sorry - Internal Server Error', error: e })
+  }
 })
 
 router.get('/get-tour-day-media-by-brand', async (req, res) => {
   try {
-    const data = await callGetTourDayMediaByBrand();
-    res.status(200).json({ data });
+    const data = await callGetTourDayMediaByBrand()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Error", error: e });
-  };
+    res.status(500).json({ message: 'Sorry - Internal Server Error', error: e })
+  }
 })
 
 // WIP - Scott
 router.post('/get-tour-media', async (req, res) => {
   try {
     const data = await callGetTourMedia(req.body.tourNumber)
-    res.status(200).json({ data });
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Error", error: e });
-  };
+    res.status(500).json({ message: 'Sorry - Internal Server Error', error: e })
+  }
 })
 
 router.get('/get-tour-media-by-brand', async (req, res) => {
   try {
-    const data = await callGetTourMediaByBrand();
-    res.status(200).json({ data });
+    const data = await callGetTourMediaByBrand()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
@@ -79,67 +83,81 @@ router.get('/get-tour-media-by-brand', async (req, res) => {
 
 router.get('/get-hotel-media', async (req, res) => {
   try {
-    const data = await callGetHotelMedia();
-    res.status(200).json({ data });
+    const data = await callGetHotelMedia()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
 router.get('/get-all-hotel-codes', async (req, res) => {
   try {
-    const data = await callGetAllHotelCodes();
-    res.status(200).json({ data });
+    const data = await callGetAllHotelCodes()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
 // WIP - Scott
 router.get('/get-basic-hotel-media', async (req, res) => {
   try {
-    const data = await callGetBasicHotelMedia();
-    res.status(200).json({ data });
+    const data = await callGetBasicHotelMedia()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
 router.get('/get-basic-hotel-media-by-location', async (req, res) => {
   try {
-    const data = await callGetBasicHotelMediaByLocation();
-    res.status(200).json({ data });
+    const data = await callGetBasicHotelMediaByLocation()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
 // WIP - Scott
 router.get('/get-basic-hotel-media-by-tour', async (req, res) => {
   try {
-    const data = await callGetBasicHotelMediaByTour();
-    res.status(200).json({ data });
+    const data = await callGetBasicHotelMediaByTour()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
 router.get('/get-hotel-media-by-city-and-tour-code', async (req, res) => {
   try {
-    const data = await callGetHotelMediaByCityAndTourCode();
-    res.status(200).json({ data });
+    const data = await callGetHotelMediaByCityAndTourCode()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
 // WIP - Scott
 router.get('/get-hotel-media-by-tour-code', async (req, res) => {
   try {
-    const data = await callGetHotelMediaByTourCode();
-    res.status(200).json({ data });
+    const data = await callGetHotelMediaByTourCode()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
@@ -149,49 +167,60 @@ router.get('/get-hotel-media-by-tour-code', async (req, res) => {
 
 router.get('/get-departures-with-pricing', async (req, res) => {
   try {
-    const data = await callGetDeparturesWithPricing();
-    res.status(200).json({ data });
+    const data = await callGetDeparturesWithPricing()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
 // WIP - Scott
 router.get('/get-departure-pricing', async (req, res) => {
   try {
-    const data = await callGetDeparturePricing();
-    res.status(200).json({ data });
+    const data = await callGetDeparturePricing()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
-router.get('/get-departures', async (req, res) => {
+router.post('/get-departures', async (req, res) => {
   try {
-    const data = await callGetDepartures();
-    res.status(200).json({ data });
+    // const data = await callGetDepartures();
+    const data = await callGetDepartures(req.body.tourNumber)
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
 // WIP - Scott
 router.get('/get-departures-by-season', async (req, res) => {
   try {
-    const data = await callGetDeparturesBySeason();
-    res.status(200).json({ data });
+    const data = await callGetDeparturesBySeason()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 
 // This call is broken
 router.get('/get-group-departures', async (req, res) => {
   try {
-    const data = await callGetGroupDepartures();
-    res.status(200).json({ data });
+    const data = await callGetGroupDepartures()
+    res.status(200).json({ data })
   } catch (e) {
-    res.status(500).json({ message: "Sorry - Internal Server Errror", error: e });
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
   }
 })
 

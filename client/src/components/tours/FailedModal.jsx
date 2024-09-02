@@ -53,7 +53,7 @@ const FailedModal = ({ open, setOpen }) => {
       }`}
     >
       <div
-        className={`bg-zinc-100 rounded-xl transition-all text-zinc-600 w-[85%] md:w-[70%] max-w-[750px] h-[97%] md:h-[80%] flex flex-col p-2 md:p-5 border-8 shadow-inner ${
+        className={`bg-zinc-100 rounded-xl transition-all text-zinc-600 w-[85%] md:w-[70%] max-w-[750px] h-[97%] md:h-[95%] flex flex-col p-2 md:p-5 border-8 shadow-inner ${
           open ? 'scale-100 opacity-100' : 'scale-125 opacity-0'
         }`}
       >
@@ -86,37 +86,37 @@ const FailedModal = ({ open, setOpen }) => {
               <input
                 type="text"
                 placeholder="Name"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:p-3"
+                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:py-1 md:px-3"
                 onChange={e => setName(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Email"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:p-3"
+                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:py-1 md:px-3"
                 onChange={e => setEmail(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Phone"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:p-3"
+                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:py-1 md:px-3"
                 onChange={e => setPhone(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="US City (or country) you are located"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:p-3"
+                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:py-1 md:px-3"
                 onChange={e => setLocation(e.target.value)}
               />
               <input
                 type="text"
                 placeholder="Best time (locally) for us to connect"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:p-3"
+                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:py-1 md:px-3"
                 onChange={e => setTime(e.target.value)}
               />
 
               <textarea
                 placeholder="What kind of trip are you looking for?"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:p-3"
+                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:py-1 md:px-3"
                 onChange={e => setComments(e.target.value)}
               ></textarea>
               <div className="flex justify-end">

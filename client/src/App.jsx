@@ -8,23 +8,27 @@ import GlobusTours from './components/tours/GlobusTours'
 import CosmosTours from './components/tours/Cosmos'
 import ThankYou from './pages/ThankYou'
 import NotFound from './pages/NotFound'
+import AvalonTours from './components/tours/AvalonTours'
+import { ToursContextProvider } from './context/ToursContext'
 
 function App() {
   return (
     <>
-      <Routes>
-        <Route path="/" element={<Layout />}>
-          <Route index element={<Home />} />
-          <Route path="/available-tours" element={<AvailableTours />} />
-          <Route path="/tour-media/:id" element={<TourMediaDetails />} />
-          <Route path="/globus-tours" element={<GlobusTours />} />
-          <Route path="/avalon-tours" element={<AvailableTours />} />
-          <Route path="/cosmos-tours" element={<CosmosTours />} />
-          <Route path="/thank-you" element={<ThankYou />} />
+      <ToursContextProvider>
+        <Routes>
+          <Route path="/" element={<Layout />}>
+            <Route index element={<Home />} />
+            <Route path="/available-tours" element={<AvailableTours />} />
+            <Route path="/tour-media/:id" element={<TourMediaDetails />} />
+            <Route path="/globus-tours" element={<GlobusTours />} />
+            <Route path="/avalon-tours" element={<AvalonTours />} />
+            <Route path="/cosmos-tours" element={<CosmosTours />} />
+            <Route path="/thank-you" element={<ThankYou />} />
 
-          <Route path="*" element={<NotFound />} />
-        </Route>
-      </Routes>
+            <Route path="*" element={<NotFound />} />
+          </Route>
+        </Routes>
+      </ToursContextProvider>
     </>
   )
 }

@@ -1,17 +1,17 @@
 const ItineraryCard = ({ selectedTour }) => {
-  console.log(
-    'this is the image',
-    `https://images.globusfamily.com/vacation/
-    ${selectedTour.data.Itinerary[0].split('dayimage>')[1].split('</SPAN>')[0]}
-  `
-  )
+  // console.log(
+  //   'this is the image',
+  //   `https://images.globusfamily.com/vacation/
+  //   ${selectedTour?.data.Itinerary[0].split('dayimage>')[1].split('</SPAN>')[0]}
+  // `
+  // )
   return (
     <>
       <div className="flex flex-col text-left">
-        {selectedTour.data.Itinerary.map((item, i) => (
+        {selectedTour?.data?.Itinerary.map((item, i) => (
           <div
             key={i}
-            className="flex flex-col gap-2 rounded-md bg-white shadow-md shadow-zinc-200 p-5 my-2 animate-slidedown500"
+            className="flex flex-col gap-2 rounded-md shadow-md shadow-zinc-200 p-5 my-2 animate-slidedown500 border-8 border-zinc-100"
           >
             {/* {item} */}
             {/* -------- TITLE -------- */}

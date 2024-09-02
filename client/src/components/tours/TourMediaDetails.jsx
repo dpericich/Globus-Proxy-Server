@@ -2,14 +2,12 @@ import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import ErrorBoundryTours from './ErrorBoundryTours'
 import Loading from '../Loading'
-import Modal from './Modal'
 import Success from './Success'
 import Failed from './Failed'
 
 const TourMediaDetails = () => {
   const { id } = useParams()
   const [selectedTour, setSelectedTour] = useState(null)
-  const [open, setOpen] = useState(false)
   const [isLoading, setIsLoading] = useState(true)
   const [isFailed, setIsFailed] = useState(false)
 
@@ -40,20 +38,9 @@ const TourMediaDetails = () => {
         <div>
           {isLoading === true ? <Loading /> : null}
           {isLoading === false && (
-            <Success
-              selectedTour={selectedTour}
-              setOpen={setOpen}
-              open={open}
-              id={id}
-            />
+            <Success selectedTour={selectedTour} id={id} />
           )}
         </div>
-
-        <Modal
-          open={open}
-          onClose={() => setOpen(!open)}
-          selectedTour={selectedTour}
-        />
       </div>
     </ErrorBoundryTours>
   )

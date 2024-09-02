@@ -1,9 +1,10 @@
 const SearchBar = ({ search, setSearch }) => {
   return (
-    <div className="bg-zinc-200 flex justify-start p-3 w-[100%]">
+    // <div className="bg-zinc-200 flex justify-start p-3 w-[100%]">
+    <>
       <form
         onSubmit={e => e.preventDefault()}
-        className="flex justify-start w-[100%] md:w-[45%]"
+        className="flex justify-start w-[100%] md:w-[80%]"
       >
         <input
           id="search"
@@ -15,7 +16,9 @@ const SearchBar = ({ search, setSearch }) => {
           className="text-xs md:text-sm rounded-md p-3 w-[100%]"
         />
       </form>
-    </div>
+    </>
+
+    // </div>
   )
 }
 
