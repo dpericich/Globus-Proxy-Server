@@ -21,15 +21,14 @@ const ItineraryCard = ({ selectedTour }) => {
         {selectedTour?.data?.Itinerary.map((item, i) => (
           <div
             key={i}
-            className="flex flex-col gap-2 rounded-md shadow-md shadow-zinc-200 p-5 my-2 animate-slidedown500 border-8 border-zinc-100"
+            className="flex flex-col gap-2 rounded-md shadow-md shadow-zinc-200 p-5 my-2 animate-slidedown500 border-2 border-zinc-100"
           >
-            {/* {item} */}
             {/* -------- TITLE -------- */}
             <p className="text-zinc-800 text-2xl font-serif font-semibold">
               Day {i + 1}
             </p>
             <p
-              className="text-md md:text-xl font-semibold text-sky-700"
+              className="text-md md:text-xl font-semibold text-sky-700 underline"
               dangerouslySetInnerHTML={{
                 __html: item
                   ?.split('</SPAN>')[0]

@@ -8,8 +8,8 @@ const TourDetailsOverview = ({ selectedTour, id }) => {
   //
   useEffect(() => {
     try {
-      fetch('http://localhost:8000/api/v1/globus/get-departures', {
-        // fetch('https://globus.sldevtestdomain.com/api/v1/globus/get-departures', {
+      // fetch('http://localhost:8000/api/v1/globus/get-departures', {
+      fetch('https://globus.sldevtestdomain.com/api/v1/globus/get-departures', {
         headers: {
           'Content-Type': 'application/json',
         },
@@ -31,11 +31,11 @@ const TourDetailsOverview = ({ selectedTour, id }) => {
         <div className="flex justify-center py-5">
           <img
             src={`https://images.globusfamily.com/vacation/${id}.jpg`}
-            className="h-[100%] rounded-md"
+            className="h-[100%] w-[100%] rounded-md"
           ></img>
         </div>
-        <div className="col-span-2 px-7 py-5 text-left">
-          <p className="text-sm md:text-[12pt] leading-6 text-zinc-500">
+        <div className="col-span-2 md:px-7 md:py-5 text-left">
+          <p className="text-sm md:text-[12pt] leading-6 text-zinc-500 mb-3">
             {selectedTour?.data['Vacation Overview']}
           </p>
         </div>

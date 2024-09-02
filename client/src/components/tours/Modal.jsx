@@ -12,7 +12,6 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
   const [date, setDate] = useState('')
   const [comments, setComments] = useState('')
 
-  console.log('This is the Modal price and dates', priceDates)
   const inputs = [
     { placeholder: 'Name', onChange: setName },
     { placeholder: 'Email', onChange: setEmail },
@@ -65,38 +64,40 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
       }`}
     >
       <div
-        className={`bg-zinc-100 rounded-xl transition-all text-zinc-600 w-[85%] md:w-[70%] max-w-[750px] h-[90%] md:h-[80%] overflow-y-scroll flex flex-col p-2 md:p-5 border-8 shadow-inner ${
+        className={`bg-zinc-100 rounded-xl transition-all text-zinc-600 w-[85%] md:w-[70%] max-w-[750px] h-[95%] overflow-y-scroll flex flex-col p-2 md:p-5 border-8 shadow-inner ${
           open ? 'scale-100 opacity-100' : 'scale-125 opacity-0'
         }`}
       >
-        <div className="flex justify-center items-center">
-          <img className="h-[40px] md:h-20 md:w-40" src={logo}></img>
+        <div className="flex justify-center items-center w-[100%]">
+          <div className="w-[20%]"></div>
+          <div className="flex justify-center w-[60%]">
+            <img className="h-[40px] md:h-20 md:w-40" src={logo}></img>
+          </div>
+          <div className="flex justify-end w-[20%]">
+            <button
+              onClick={onClose}
+              className="flex justify-center items-center text-zinc-700 text-sm font-medium p-3 rounded h-[30px] border-4 hover:bg-zinc-300 hover:border-zinc-400 hover:scale-105 transition-all"
+            >
+              X
+            </button>
+          </div>
         </div>
 
-        <div className="flex justify-end w-[100%]">
-          <button
-            onClick={onClose}
-            className=" text-zinc-700 text-xl font-bold p-3 rounded-md hover:bg-zinc-400 hover:border-white hover:scale-105 transition-all"
-          >
-            X
-          </button>
-        </div>
-
-        <div className="flex flex-col gap-2 w-[100%]">
-          <p className="text-2xl md:text-5xl text-sky-700 font-bold font-serif">
+        <div className="flex flex-col w-[100%]">
+          <p className="text-3xl md:text-5xl mt-3 text-sky-700 font-bold font-serif">
             Interested in this package?
           </p>
-          <p className="text-sm px-3 md:text-2xl font-semibold font-sans my-3">
+          <p className="text-md px-3 md:text-2xl font-semibold font-sans my-3">
             {selectedTour?.data['Length Banner']}
           </p>
 
-          <p className="text-xl italic">Connect with our team!</p>
+          <p className="text-md">Connect with our team!</p>
 
           <div className="flex justify-center mt-2">
             {' '}
             <form
               onSubmit={handleSubmit}
-              className="flex flex-col gap-4 justify-start h-[100%] w-[90%] md:w-[80%]"
+              className="flex flex-col gap-2 md:gap-4 justify-start h-[100%] w-[90%] md:w-[80%]"
             >
               {/* -------------- Standard Inputs --------------- */}
               {inputs.map((item, i) => (
@@ -104,7 +105,7 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
                   key={i}
                   type="text"
                   placeholder={item.placeholder}
-                  className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:px-3"
+                  className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3"
                   onChange={e => item.onChange(e.target.value)}
                 />
               ))}
@@ -115,9 +116,9 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
                 <select
                   value={date}
                   onChange={e => setDate(e.target.value)}
-                  className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:px-3"
+                  className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3"
                 >
-                  {priceDates?.data.map((item, i) => (
+                  {priceDates?.data?.map((item, i) => (
                     <option key={i} value={item?.airStartDate.slice(0, 10)}>
                       {item?.airStartDate.slice(0, 10)}
                     </option>
@@ -128,7 +129,7 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
               {/* -------------- Comments --------------- */}
               <textarea
                 placeholder="Comments"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:px-3"
+                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3"
                 onChange={e => setComments(e.target.value)}
               ></textarea>
 

@@ -1,8 +1,8 @@
 import { createContext, useState, useEffect } from 'react'
 
-export const ToursContext = createContext()
+export const GlobusToursContext = createContext()
 
-export const ToursContextProvider = ({ children }) => {
+export const GlobusToursContextProvider = ({ children }) => {
   const [tours, setTours] = useState(null)
 
   useEffect(() => {
@@ -15,8 +15,8 @@ export const ToursContextProvider = ({ children }) => {
   }, [])
 
   return (
-    <ToursContext.Provider value={{ tours: tours }}>
+    <GlobusToursContext.Provider value={{ tours: tours }}>
       {children}
-    </ToursContext.Provider>
+    </GlobusToursContext.Provider>
   )
 }

@@ -16,7 +16,6 @@ const AvalonTours = () => {
     )
       .then(res => res.json())
       .then(res => setData(res.data.filter(item => item.Brand === 'AVALON')))
-    // console.log('This...', data)
   }, [])
 
   // render Loading while 'null', else checks for search state and renders based off that

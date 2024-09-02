@@ -12,6 +12,14 @@ const FailedModal = ({ open, setOpen }) => {
   const [time, setTime] = useState('')
   const [comments, setComments] = useState('')
   //
+  const inputs = [
+    { placeholder: 'Name', onChange: setName },
+    { placeholder: 'Email', onChange: setEmail },
+    { placeholder: 'Phone', onChange: setPhone },
+    { placeholder: 'Your Location', onChange: setLocation },
+    { placeholder: 'Best time to connect', onChange: setTime },
+  ]
+  //
   const handleSubmit = e => {
     e.stopPropagation()
     const data = {
@@ -57,25 +65,27 @@ const FailedModal = ({ open, setOpen }) => {
           open ? 'scale-100 opacity-100' : 'scale-125 opacity-0'
         }`}
       >
-        <div className="flex justify-center items-center">
-          <img className="h-[40px] md:h-20 md:w-40" src={logo}></img>
+        <div className="flex justify-center items-center w-[100%]">
+          <div className="w-[20%]"></div>
+          <div className="flex justify-center w-[60%]">
+            <img className="h-[40px] md:h-20 md:w-40" src={logo}></img>
+          </div>
+          <div className="flex justify-end w-[20%]">
+            <button
+              onClick={() => setOpen(!open)}
+              className="flex justify-center items-center text-zinc-700 text-sm font-medium p-3 rounded h-[30px] border-4 hover:bg-zinc-300 hover:border-zinc-400 hover:scale-105 transition-all"
+            >
+              X
+            </button>
+          </div>
         </div>
 
-        <div className="flex justify-end w-[100%]">
-          <button
-            onClick={() => setOpen(!open)}
-            className=" text-zinc-700 text-xl font-bold p-3 rounded-md hover:bg-zinc-400 hover:border-white hover:scale-105 transition-all"
-          >
-            X
-          </button>
-        </div>
-
-        <div className="flex flex-col gap-2 w-[100%]">
-          <p className="text-3xl md:text-5xl text-sky-700 font-bold font-serif">
+        <div className="flex flex-col w-[100%]">
+          <p className="text-3xl md:text-5xl mt-3 text-sky-700 font-bold font-serif">
             How can we help?
           </p>
 
-          <p className="text-xl italic">Connect with our team!</p>
+          <p className="text-md mt-3">Connect with our team!</p>
 
           <div className="flex justify-center mt-2">
             {' '}
@@ -83,40 +93,20 @@ const FailedModal = ({ open, setOpen }) => {
               onSubmit={handleSubmit}
               className="flex flex-col gap-4 justify-start w-[90%] md:w-[80%]"
             >
-              <input
-                type="text"
-                placeholder="Name"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:py-1 md:px-3"
-                onChange={e => setName(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Email"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:py-1 md:px-3"
-                onChange={e => setEmail(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Phone"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:py-1 md:px-3"
-                onChange={e => setPhone(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="US City (or country) you are located"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:py-1 md:px-3"
-                onChange={e => setLocation(e.target.value)}
-              />
-              <input
-                type="text"
-                placeholder="Best time (locally) for us to connect"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:py-1 md:px-3"
-                onChange={e => setTime(e.target.value)}
-              />
-
+              {/* -------------- Standard Inputs --------------- */}
+              {inputs.map((item, i) => (
+                <input
+                  key={i}
+                  type="text"
+                  placeholder={item.placeholder}
+                  className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3"
+                  onChange={e => item.onChange(e.target.value)}
+                />
+              ))}
+              {/* -------------- Comments --------------- */}
               <textarea
                 placeholder="What kind of trip are you looking for?"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md py-1 px-2 md:py-1 md:px-3"
+                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3"
                 onChange={e => setComments(e.target.value)}
               ></textarea>
               <div className="flex justify-end">

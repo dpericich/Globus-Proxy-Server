@@ -1,7 +1,6 @@
 // calling the data in context and then filtering in component with use effect
-
 import { useState, useEffect, useContext } from 'react'
-import { ToursContext } from '../../context/ToursContext'
+import { GlobusToursContext } from '../../context/GlobusContext'
 import SearchBar from '../SearchBar'
 import Loading from '../Loading'
 import TourCard from './TourCard'
@@ -13,8 +12,7 @@ const GlobusTours = () => {
   const [filteredData, setFilteredData] = useState(null)
   const [search, setSearch] = useState('')
   //
-  const { tours } = useContext(ToursContext)
-  console.log('This is the tours....', tours)
+  const { tours } = useContext(GlobusToursContext)
 
   useEffect(() => {
     setData(tours)
@@ -28,7 +26,6 @@ const GlobusTours = () => {
       }
     })
     setFilteredData(results)
-    console.log('This is filteredData.....', filteredData)
   }, [tours])
 
   // render Loading while 'null', else checks for search state and renders based off that

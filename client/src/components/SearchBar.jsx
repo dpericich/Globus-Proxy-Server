@@ -10,7 +10,7 @@ const SearchBar = ({ search, setSearch }) => {
           id="search"
           type="text"
           role="searchbox"
-          placeholder="Search with tour keywords (California, London, Paris etc.)"
+          placeholder="Search with tour keywords (London, Paris, Spain etc.)"
           value={search}
           onChange={e => setSearch(e.target.value)}
           className="text-xs md:text-sm rounded-md p-3 w-[100%]"

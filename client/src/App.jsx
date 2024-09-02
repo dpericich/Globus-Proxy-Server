@@ -5,16 +5,16 @@ import Home from './pages/Home'
 import AvailableTours from './components/tours/AvailableTours'
 import TourMediaDetails from './components/tours/TourMediaDetails'
 import GlobusTours from './components/tours/GlobusTours'
-import CosmosTours from './components/tours/Cosmos'
+import CosmosTours from './components/tours/CosmosTours'
 import ThankYou from './pages/ThankYou'
 import NotFound from './pages/NotFound'
 import AvalonTours from './components/tours/AvalonTours'
-import { ToursContextProvider } from './context/ToursContext'
+import { GlobusToursContextProvider } from './context/GlobusContext'
 
 function App() {
   return (
     <>
-      <ToursContextProvider>
+      <GlobusToursContextProvider>
         <Routes>
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
@@ -28,7 +28,7 @@ function App() {
             <Route path="*" element={<NotFound />} />
           </Route>
         </Routes>
-      </ToursContextProvider>
+      </GlobusToursContextProvider>
     </>
   )
 }

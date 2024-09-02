@@ -4,7 +4,6 @@ const TourCard = ({ tour }) => {
   return (
     <Link
       to={`http://localhost:5173/tour-media/${tour.TourNumber}`}
-      // to={`https://www.scottlproject.com/tour-media/${tour.TourNumber}`}
       className="flex flex-col justify-center items-center"
     >
       <div className="grid grid-cols-1 md:grid-cols-5 m-4 shadow-md shadow-zinc-400  hover:scale-105 transition-all w-[90%]">

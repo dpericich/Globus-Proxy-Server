@@ -3,57 +3,62 @@ import React from 'react'
 const TourStats = ({ selectedTour, priceDates, setOpen }) => {
   return (
     <div className="w-[100%] bg-zinc-100 rounded-lg shadow-md shadow-zinc-200 mb-5">
-      <div className="grid grid-cols-1 md:grid-cols-3">
-        {/* ------------- Price and Dates ------------------ */}
-        <div className="flex flex-col py-5 justify-center items-center bg-white rounded-md m-2 shadow-inner shadow-zinc-300">
-          <p className="text-xl">
-            From:{' '}
-            <span className="font-bold text-sky-700">
-              ${priceDates?.data[0].single} (USD)
-            </span>
-          </p>
-          <select className=" bg-white rounded-lg shadow-inner shadow-gray-200 text-black m-1 py-1 px-3 w-[70%]">
-            {priceDates?.data.map((item, i) => (
-              <option key={i} className="border-4 text-black w-[100%]">
-                {`Start Date: ${item.airStartDate.slice(0, 10)}`}
-              </option>
-            ))}
-          </select>
+      <div className="grid grid-cols-1 md:grid-cols-2">
+        {/* ------------- Price ------------------ */}
+        <div className="flex flex-col justify-center bg-white rounded-md m-3 shadow-inner shadow-zinc-300 border-8 border-white">
+          <div className="flex justify-center items-center w-[100%] h-[50%]">
+            <div className="flex justify-between w-[90%] py-5 px-2 md:px-5">
+              <p className="text-2xl md:text-3xl font-bold text-sky-700 font-serif">
+                From:{' '}
+              </p>
+              <p>
+                <span className="text-xl md:text-3xl text-zinc-600 pr-1">
+                  ${priceDates?.data[0].single}
+                </span>
+                <span>(USD)</span>
+              </p>
+            </div>
+          </div>
+          {/* ------------- Dates ------------------ */}
+          <div className="flex justify-center items-center w-[100%] h-[50%]">
+            <div className="flex justify-between w-[90%] px-2 md:px-5">
+              <p className="text-2xl md:text-3xl font-bold text-sky-700 font-serif">
+                Dates:
+              </p>
+              <select className="bg-white rounded-lg shadow-inner shadow-gray-200 text-black m-1 py-1 px-3 text-sm md:text-lg w-[70%] md:w-[50%]">
+                {priceDates?.data?.map((item, i) => (
+                  <option key={i} className="border-4 text-black">
+                    {`Start: ${item.airStartDate.slice(0, 10)}`}
+                  </option>
+                ))}
+              </select>
+            </div>
+          </div>
         </div>
-        {/* ------------- Duration, Meals ------------------ */}
-        <div className="flex flex-col justify-center items-center p-3 bg-white rounded-md m-2 shadow-inner shadow-zinc-300">
-          <p className="text-md">
-            <span className="text-3xl text-sky-700 font-semibold font-serif">
-              Duration
-            </span>
-            <br></br>
 
-            <span className="text-zinc-500 text-xl">
-              {selectedTour?.data?.Itinerary.length} Days
-            </span>
-          </p>
-        </div>
-        <div className="flex flex-col justify-center items-center p-3 bg-white rounded-md m-2 shadow-inner shadow-zinc-300">
-          <p className="text-md">
-            <span className="text-3xl text-sky-700 font-semibold font-serif">
-              Meals
-            </span>
-            <br></br>
+        {/* ------------- Duration ------------------ */}
+        <div className="flex flex-col justify-center bg-white rounded-md m-3 shadow-inner shadow-zinc-300 border-8 border-white">
+          <div className="flex justify-center items-center w-[100%]">
+            <div className="flex justify-between w-[90%] px-2 md:px-5 pt-4">
+              <p className="text-2xl md:text-3xl text-sky-700 font-semibold font-serif">
+                Duration:
+              </p>
 
-            <span className="text-zinc-500 text-xl">
-              {selectedTour?.data['Meals']}
-            </span>
-          </p>
+              <p className="text-3xl text-zinc-600 pr-1">
+                {selectedTour?.data?.Itinerary.length} Days
+              </p>
+            </div>
+          </div>
+
+          <div className="flex justify-center items-center w-[100%] py-5">
+            <button
+              onClick={setOpen}
+              className="rounded-md p-3 text-white bg-sky-800 shadow-md shadow-zinc-400 w-[90%] md:w-[80%] hover:bg-sky-500 hover:scale-105 transition-all text-xl"
+            >
+              GET STARTED
+            </button>
+          </div>
         </div>
-      </div>
-      <div className="flex justify-center items-center w-[100%] pt-4 pb-6 rounded-b-lg">
-        {' '}
-        <button
-          onClick={setOpen}
-          className="rounded-md p-3 text-white bg-sky-600 shadow-md shadow-zinc-400 w-[90%] md:w-[40%] hover:bg-sky-800 hover:scale-105 transition-all text-xl"
-        >
-          LET'S CONNECT!
-        </button>
       </div>
     </div>
   )

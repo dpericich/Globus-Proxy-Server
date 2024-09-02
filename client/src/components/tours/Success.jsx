@@ -1,7 +1,5 @@
-import { useState } from 'react'
 import TourDetailsOverview from './TourDetailsOverview'
 import ItineraryCard from './ItineraryCard'
-import TourPricing from './TourPricing'
 
 const Success = ({ selectedTour, id }) => {
   return (
