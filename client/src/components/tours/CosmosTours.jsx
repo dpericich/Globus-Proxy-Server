@@ -12,12 +12,16 @@ const CosmosTours = () => {
 
   useEffect(() => {
     // fetch('http://localhost:8000/api/v1/globus/get-all-available-tours')
+    // fetch(
+    //   'https://globus.sldevtestdomain.com/api/v1/globus/get-all-available-tours'
+    // )
     fetch(
-      'https://globus.sldevtestdomain.com/api/v1/globus/get-all-available-tours'
+      'https://globus.safetravelsggapi.com/api/v1/globus/get-all-available-tours'
     )
       .then(res => res.json())
       .then(res => setData(res.data.filter(item => item.Brand === 'COSMOS')))
   }, [])
+  console.log('this is the data', data)
 
   // render Loading while 'null', else checks for search state and renders based off that
   return (

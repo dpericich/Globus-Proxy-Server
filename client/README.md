@@ -17,3 +17,9 @@ RELOAD AND RESTART
 sudo systemctl daemon-reload
 sudo systemctl enable myapp.service
 sudo systemctl start myapp.service
+
+SSH Key = ssh -o "IdentitiesOnly=yes" -i "SafeTravels-Globus-cert.pem" ubuntu@ec2-35-94-36-241.us-west-2.compute.amazonaws.com
+
+SSH push code command = rsync -avz --exclude 'node_modules' --exclude '.git' --exclude '.env' \
+-e "ssh -o "IdentitiesOnly=yes" -i /Users/scottlucas/Desktop/certs/SafeTravels-Globus-cert.pem" \
+. ubuntu@ec2-35-94-36-241.us-west-2.compute.amazonaws.com:~/app

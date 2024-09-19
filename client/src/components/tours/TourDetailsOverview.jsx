@@ -9,13 +9,17 @@ const TourDetailsOverview = ({ selectedTour, id, brand }) => {
   useEffect(() => {
     try {
       // fetch('http://localhost:8000/api/v1/globus/get-departures', {
-      fetch('https://globus.sldevtestdomain.com/api/v1/globus/get-departures', {
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        method: 'POST',
-        body: JSON.stringify({ tourNumber: id, brand: brand }),
-      })
+      fetch(
+        'https://globus.safetravelsggapi.com/api/v1/globus/get-departures',
+        {
+          // fetch('https://globus.sldevtestdomain.com/api/v1/globus/get-departures', {
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          method: 'POST',
+          body: JSON.stringify({ tourNumber: id, brand: brand }),
+        }
+      )
         .then(res => res.json())
         .then(res => {
           setPriceDates(res)

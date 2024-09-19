@@ -14,6 +14,7 @@ const GlobusTours = () => {
   const brand = 'Globus'
   //
   const { tours } = useContext(GlobusToursContext)
+  // console.log('this is the tours', tours)
 
   useEffect(() => {
     setData(tours)
