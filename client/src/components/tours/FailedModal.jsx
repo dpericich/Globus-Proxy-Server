@@ -1,17 +1,19 @@
+// This modal uses the same AWS Lambda url as the tour inquiryy form. Only difference is there is no Tour Name provided. The Lambda doesn't mind this and sends what data it does have.
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/Safe Travels_LOGO FINAL.png'
 
 const FailedModal = ({ open, setOpen }) => {
   const navigate = useNavigate()
-  // const [open, setOpen] = useState(false)
   const [name, setName] = useState('')
   const [email, setEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [location, setLocation] = useState('')
   const [time, setTime] = useState('')
+  const [date, setDate] = useState('')
   const [comments, setComments] = useState('')
   //
+
   const inputs = [
     { placeholder: 'Name', onChange: setName },
     { placeholder: 'Email', onChange: setEmail },
@@ -21,36 +23,27 @@ const FailedModal = ({ open, setOpen }) => {
   ]
   //
   const handleSubmit = e => {
-    e.stopPropagation()
-    const data = {
-      name,
-      email,
-      phone,
-      location,
-      time,
-      comments,
-    }
+    e.preventDefault()
+    fetch('https://6lp5x7v334.execute-api.us-west-2.amazonaws.com/send-email', {
+      mode: 'no-cors',
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        senderName: 'scott@skywax.com',
+        senderEmail: 'scott@skywax.com',
+        message: comments,
+        clientName: name,
+        clientEmail: email,
+        phone: phone,
+        location: location,
+        time: time,
+        date: date,
+      }),
+    })
 
-    // ------ fetch Lambda URL, send data, reset fileds ----
-    const sendData = fetch(
-      'https://akxkf4hwkh5gntryfwrqsvfyve0ixlro.lambda-url.us-west-2.on.aws/',
-      {
-        method: 'POST',
-        // mode: 'cors',
-        cache: 'no-cache',
-        body: JSON.stringify(data),
-      }
-    )
-    sendData
-      .then(res => res.json())
-      .then(data => console.log('This is the data', data))
-
-    setName('')
-    setEmail('')
-    setPhone('')
-    setLocation('')
-    setTime('')
-    setComments('')
     navigate('/thank-you')
   }
 
@@ -103,6 +96,19 @@ const FailedModal = ({ open, setOpen }) => {
                   onChange={e => item.onChange(e.target.value)}
                 />
               ))}
+
+              {/* -------------- Date --------------- */}
+              <select
+                value={date}
+                onChange={e => setDate(e.target.value)}
+                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3"
+              >
+                <option>When would you like to travel?</option>
+                <option value={'Within 6 months'}>Within 6 months</option>
+                <option value={'6-12 months'}>6-12 months</option>
+                <option value={'Not sure yet'}>Not sure yet.</option>
+              </select>
+
               {/* -------------- Comments --------------- */}
               <textarea
                 placeholder="What kind of trip are you looking for?"
@@ -123,3 +129,40 @@ const FailedModal = ({ open, setOpen }) => {
 }
 
 export default FailedModal
+
+// const handleSubmit = e => {
+//   e.stopPropagation()
+
+//   const data = {
+//     name,
+//     email,
+//     phone,
+//     location,
+//     time,
+//     date,
+//     comments,
+//   }
+
+//   // ------ fetch Lambda URL, send data, reset fileds ----
+//   const sendData = fetch(
+//     'https://6lp5x7v334.execute-api.us-west-2.amazonaws.com/send-email',
+//     {
+//       method: 'POST',
+//       mode: 'cors',
+//       cache: 'no-cache',
+//       body: JSON.stringify(data),
+//     }
+//   )
+//   sendData
+//     .then(res => res.json())
+//     .then(data => console.log('This is the data', data))
+
+//   setName('')
+//   setEmail('')
+//   setPhone('')
+//   setLocation('')
+//   setTime('')
+//   setDate('')
+//   setComments('')
+//   navigate('/thank-you')
+// }

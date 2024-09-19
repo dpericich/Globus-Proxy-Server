@@ -19,7 +19,10 @@ function App() {
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="/available-tours" element={<AvailableTours />} />
-            <Route path="/tour-media/:id" element={<TourMediaDetails />} />
+            <Route
+              path="/tour-media/:id/:brand"
+              element={<TourMediaDetails />}
+            />
             <Route path="/globus-tours" element={<GlobusTours />} />
             <Route path="/avalon-tours" element={<AvalonTours />} />
             <Route path="/cosmos-tours" element={<CosmosTours />} />

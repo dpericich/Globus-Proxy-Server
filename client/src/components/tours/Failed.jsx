@@ -4,6 +4,9 @@ import FailedModal from './FailedModal'
 
 const Failed = () => {
   const [open, setOpen] = useState(false)
+
+  //
+
   return (
     <div className="h-screen bg-white">
       <div className='bg-center bg-cover bg-[url("/public/ocean.jpg")] h-[80%] md:h-[60%] md:rounded-md'>

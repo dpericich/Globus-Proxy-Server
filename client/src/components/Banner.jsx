@@ -27,13 +27,13 @@ const Banner = () => {
             </div>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center bg-black/60 p-3 h-[65%] w-[100%] md:h-[30%]">
+          <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center bg-black/60 p-3 h-[50%] w-[100%] md:h-[30%]">
             {brandLinks.map((item, i) => (
               <Link key={i} to={item.link}>
                 <div className="flex justify-center items-center">
                   <img
                     src={item.image}
-                    className="h-[65px] w-[170px] md:h-[70px] md:w-[200px] border-4 rounded-md p-3 my-4 hover:scale-105 hover:border-sky-500 transition-all"
+                    className="h-[65px] w-[170px] md:h-[85px] md:w-[300px] border-4 rounded-md p-3 my-4 hover:scale-105 hover:border-sky-500 transition-all"
                   ></img>
                 </div>
               </Link>

@@ -3,57 +3,79 @@ import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/Safe Travels_LOGO FINAL.png'
 
 const Modal = ({ open, onClose, selectedTour, priceDates }) => {
+  //
+  const reverseDate = date => {
+    let dateSplit = date.split('-')
+    return `${dateSplit[1]}-${dateSplit[2]}-${dateSplit[0]}`
+  }
+  //
   const navigate = useNavigate()
-  const [name, setName] = useState('')
-  const [email, setEmail] = useState('')
+  const [clientName, setClientName] = useState('')
+  const [clientEmail, setClientEmail] = useState('')
   const [phone, setPhone] = useState('')
   const [location, setLocation] = useState('')
   const [time, setTime] = useState('')
   const [date, setDate] = useState('')
   const [comments, setComments] = useState('')
+  const [selectedItems, setSelectedItems] = useState([])
 
   const inputs = [
-    { placeholder: 'Name', onChange: setName },
-    { placeholder: 'Email', onChange: setEmail },
-    { placeholder: 'Phone', onChange: setPhone },
-    { placeholder: 'Your Location', onChange: setLocation },
-    { placeholder: 'Best time to connect', onChange: setTime },
+    { onChange: setClientName, placeholder: 'name' },
+    { onChange: setClientEmail, placeholder: 'email' },
+    { onChange: setPhone, placeholder: 'phone' },
+    { onChange: setLocation, placeholder: 'location' },
+    { onChange: setTime, placeholder: 'time' },
   ]
   //
-  const handleSubmit = e => {
-    e.stopPropagation()
-    const data = {
-      tour: selectedTour?.data['Length Banner'],
-      name,
-      email,
-      phone,
-      location,
-      time,
-      date,
-      comments,
+  const checkboxes = [
+    {
+      id: 1,
+      label:
+        'Airfare to start of tour (Tours NOT inclusive of air travel to start point)',
+    },
+    { id: 2, label: 'Tour extensions' },
+    { id: 3, label: 'Insurance Coverage' },
+    { id: 4, label: 'General Trip Questions' },
+    { id: 5, label: 'Global Travel Host (security concierge accompaniment)' },
+  ]
+  //
+  const handleChecks = e => {
+    if (e.target.checked) {
+      setSelectedItems([...selectedItems, e.target.value])
+    } else {
+      setSelectedItems([
+        ...selectedItems.filter(item => item.label !== e.target.value),
+      ])
     }
 
-    // ------ fetch Lambda URL, send data, reset fileds ----
-    const sendData = fetch(
-      'https://akxkf4hwkh5gntryfwrqsvfyve0ixlro.lambda-url.us-west-2.on.aws/',
-      {
-        method: 'POST',
-        // mode: 'cors',
-        cache: 'no-cache',
-        body: JSON.stringify(data),
-      }
-    )
-    sendData
-      .then(res => res.json())
-      .then(data => console.log('This is the data', data))
+    console.log('This', selectedItems)
+  }
+  //
+  const handleSubmit = e => {
+    e.preventDefault()
+    fetch('https://b3v2vw4uvg.execute-api.us-west-2.amazonaws.com/send-email', {
+      mode: 'no-cors',
+      method: 'POST',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        senderName: 'scott@skywax.com',
+        senderEmail: 'scott@skywax.com',
+        message: comments,
+        // date: new Date().toString(),
+        clientName: clientName,
+        clientEmail: clientEmail,
+        phone: phone,
+        location: location,
+        time: time,
+        date: date,
+        tour: selectedTour?.data['Length Banner'],
+        additionalInfo: selectedItems,
+      }),
+    })
 
-    setName('')
-    setEmail('')
-    setPhone('')
-    setLocation('')
-    setTime('')
-    setDate('')
-    setComments('')
     navigate('/thank-you')
   }
 
@@ -111,20 +133,39 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
               ))}
 
               {/* -------------- Date --------------- */}
-              <label className="flex flex-col text-left text-zinc-400">
-                Preferred Date
-                <select
-                  value={date}
-                  onChange={e => setDate(e.target.value)}
-                  className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3"
-                >
-                  {priceDates?.data?.map((item, i) => (
-                    <option key={i} value={item?.airStartDate.slice(0, 10)}>
-                      {item?.airStartDate.slice(0, 10)}
-                    </option>
-                  ))}
-                </select>
-              </label>
+
+              <select
+                value={date}
+                onChange={e => setDate(e.target.value)}
+                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3"
+              >
+                <option>Please select a preferred start date</option>
+                {priceDates?.data?.map((item, i) => (
+                  <option
+                    key={i}
+                    value={reverseDate(item?.airStartDate.slice(0, 10))}
+                  >
+                    {reverseDate(item?.airStartDate.slice(0, 10))}
+                  </option>
+                ))}
+              </select>
+              {/* -------------- Checkboxes --------------- */}
+              <p className="text-left">
+                I would like additional information/assistance regarding:
+              </p>
+              {checkboxes.map((item, i) => (
+                <div key={i} className="text-left">
+                  <label>
+                    <input
+                      type="checkbox"
+                      value={item.label}
+                      // onChange={e => handleChecks(e.target.value)}
+                      onChange={handleChecks}
+                    />
+                    {item.label}
+                  </label>
+                </div>
+              ))}
 
               {/* -------------- Comments --------------- */}
               <textarea

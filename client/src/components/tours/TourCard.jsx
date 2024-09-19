@@ -1,9 +1,15 @@
 import { Link } from 'react-router-dom'
+import logo from '../../assets/Safe Travels_LOGO FINAL.png'
 
-const TourCard = ({ tour }) => {
+const TourCard = ({ tour, brand, season }) => {
+  const defaultImage = e => {
+    e.target.src = logo
+  }
+
   return (
     <Link
-      to={`http://localhost:5173/tour-media/${tour.TourNumber}`}
+      to={`http://localhost:5173/tour-media/${tour.TourNumber}/${brand}`}
+      // to={`https://safetravelsggtours.com/tour-media/${tour.TourNumber}/${brand}`}
       className="flex flex-col justify-center items-center"
     >
       <div className="grid grid-cols-1 md:grid-cols-5 m-4 shadow-md shadow-zinc-400  hover:scale-105 transition-all w-[90%]">
@@ -15,6 +21,7 @@ const TourCard = ({ tour }) => {
         <div className="flex justify-center items-center bg-zinc-100 md:col-span-1">
           <img
             src={tour?.CoverImage}
+            onError={e => defaultImage(e)}
             className="h-[200px] w-[100%] md:h-[160px] md:w-[100%]"
           ></img>
         </div>

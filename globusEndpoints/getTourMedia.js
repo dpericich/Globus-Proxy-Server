@@ -10,7 +10,7 @@ const acceptedTypes = [
   VACA_OVERVIEW,
   MEALS,
   SMALL_GROUP,
-  VACA_ITINERARY
+  VACA_ITINERARY,
 ]
 
 const call = async xmlBody => {
@@ -21,20 +21,21 @@ const call = async xmlBody => {
       let result = convert.xml2json(data, options)
       let jsonData = JSON.parse(result)
 
-      const tourMediaData = jsonData['soap:Envelope']['soap:Body']['GetTourMediaResponse'][
-        'GetTourMediaResult'
-      ]['diffgr:diffgram']['NewDataSet']['TourMedia'];
+      const tourMediaData =
+        jsonData['soap:Envelope']['soap:Body']['GetTourMediaResponse'][
+          'GetTourMediaResult'
+        ]['diffgr:diffgram']['NewDataSet']['TourMedia']
 
-
-      const dayMediaData = jsonData['soap:Envelope']['soap:Body']['GetTourMediaResponse'][
-        'GetTourMediaResult'
-      ]['diffgr:diffgram']['NewDataSet']['DayMedia'];
+      const dayMediaData =
+        jsonData['soap:Envelope']['soap:Body']['GetTourMediaResponse'][
+          'GetTourMediaResult'
+        ]['diffgr:diffgram']['NewDataSet']['DayMedia']
 
       return {
         tourMediaData,
-        dayMediaData
-      };
-    });
+        dayMediaData,
+      }
+    })
 
   return serializeGetTourMedia(unformattedJSON)
 }
@@ -42,20 +43,20 @@ const call = async xmlBody => {
 const serializeGetTourMedia = data => {
   let newHash = {}
   // Retrive the Tour Data
-  data["tourMediaData"].forEach(record => {
+  data['tourMediaData'].forEach(record => {
     // console.log('This is the record', record['ContentType']['_text'])
     if (acceptedTypes.find(item => item === record['ContentType']['_text'])) {
       newHash[record['ContentType']['_text']] = record['Content']['_text']
-    };
-  });
+    }
+  })
 
   // Retrive the Itinerary Data
-  newHash['Itinerary'] = [];
-  data["dayMediaData"].forEach(record => {
+  newHash['Itinerary'] = []
+  data['dayMediaData'].forEach(record => {
     if (record['ContentType']['_text'] === VACA_ITINERARY) {
-      newHash['Itinerary'].push(record["Content"]["_text"]);
-    };
-  });
+      newHash['Itinerary'].push(record['Content']['_text'])
+    }
+  })
 
   return newHash
 }

@@ -6,7 +6,8 @@ import Success from './Success'
 import Failed from './Failed'
 
 const TourMediaDetails = () => {
-  const { id } = useParams()
+  const { id, brand } = useParams()
+
   const [selectedTour, setSelectedTour] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
   const [isFailed, setIsFailed] = useState(false)
@@ -38,7 +39,7 @@ const TourMediaDetails = () => {
         <div>
           {isLoading === true ? <Loading /> : null}
           {isLoading === false && (
-            <Success selectedTour={selectedTour} id={id} />
+            <Success selectedTour={selectedTour} id={id} brand={brand} />
           )}
         </div>
       </div>

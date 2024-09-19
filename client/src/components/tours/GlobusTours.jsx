@@ -11,6 +11,7 @@ const GlobusTours = () => {
   const [data, setData] = useState(null)
   const [filteredData, setFilteredData] = useState(null)
   const [search, setSearch] = useState('')
+  const brand = 'Globus'
   //
   const { tours } = useContext(GlobusToursContext)
 
@@ -50,7 +51,7 @@ const GlobusTours = () => {
             <div className="">
               {filteredData?.map((tour, i) => (
                 <div key={i}>
-                  <TourCard tour={tour} />
+                  <TourCard tour={tour} brand={brand} />
                 </div>
               ))}
             </div>
@@ -62,7 +63,7 @@ const GlobusTours = () => {
                 )
                 .map((tour, i) => (
                   <div key={i}>
-                    <TourCard tour={tour} />
+                    <TourCard tour={tour} brand={brand} />
                   </div>
                 ))}
             </>

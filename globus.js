@@ -16,6 +16,7 @@ const callGetHotelMediaByCityAndTourCode = require('./globusEndpoints/getHotelMe
 const callGetBasicHotelMedia = require('./globusEndpoints/getBasicHotelMedia')
 const callGetBasicHotelMediaByTour = require('./globusEndpoints/getBasicHotelMediaByTour')
 const callGetHotelMediaByTourCode = require('./globusEndpoints/getHotelMediaByTourCode')
+const callGetAvalonTours = require('./globusEndpoints/getAvalonTours')
 
 // This controller will handle each of our Globus endpoints
 
@@ -29,6 +30,16 @@ const callGetHotelMediaByTourCode = require('./globusEndpoints/getHotelMediaByTo
 router.get('/get-all-available-tours', async (req, res) => {
   try {
     const data = await callGetAllAvailableTours()
+    res.status(200).json({ data })
+  } catch (e) {
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
+  }
+})
+router.get('/get-avalon-tours', async (req, res) => {
+  try {
+    const data = await callGetAvalonTours()
     res.status(200).json({ data })
   } catch (e) {
     res
@@ -191,7 +202,8 @@ router.get('/get-departure-pricing', async (req, res) => {
 router.post('/get-departures', async (req, res) => {
   try {
     // const data = await callGetDepartures();
-    const data = await callGetDepartures(req.body.tourNumber)
+    const { tourNumber, brand } = req.body
+    const data = await callGetDepartures(tourNumber, brand)
     res.status(200).json({ data })
   } catch (e) {
     res

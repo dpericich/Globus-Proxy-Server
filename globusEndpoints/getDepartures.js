@@ -47,12 +47,12 @@ const serializeGetDepartures = data => {
   })
 }
 
-const callGetDepartures = async tourNumber => {
+const callGetDepartures = async (tourNumber, brand) => {
   const xmlBody = `<?xml version="1.0" encoding="utf-8"?>
     <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
       <soap:Body>
         <GetDepartures xmlns="http://webapi.globusandcosmos.com/">
-          <brand>Globus</brand>
+          <brand>${brand}</brand>
           <tourCode>${tourNumber}</tourCode>
           <pricingModel>USA</pricingModel>
         </GetDepartures>

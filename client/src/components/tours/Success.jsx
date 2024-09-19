@@ -1,7 +1,7 @@
 import TourDetailsOverview from './TourDetailsOverview'
 import ItineraryCard from './ItineraryCard'
 
-const Success = ({ selectedTour, id }) => {
+const Success = ({ selectedTour, id, brand }) => {
   return (
     <>
       <div className="flex flex-col justify-start items-start bg-white rounded-xl pb-5">
@@ -12,7 +12,11 @@ const Success = ({ selectedTour, id }) => {
           </p>
         </div>
         <div>
-          <TourDetailsOverview selectedTour={selectedTour} id={id} />
+          <TourDetailsOverview
+            selectedTour={selectedTour}
+            id={id}
+            brand={brand}
+          />
         </div>
 
         {/* ----------- Itinerary ---------- */}

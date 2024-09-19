@@ -7,8 +7,9 @@ import logo from '../../../public/cosmos.png'
 const CosmosTours = () => {
   const [data, setData] = useState(null)
   const [search, setSearch] = useState('')
+  const [season, setSeason] = useState(null)
+  const brand = 'Cosmos'
 
-  // useEffect calls fetch for data
   useEffect(() => {
     // fetch('http://localhost:8000/api/v1/globus/get-all-available-tours')
     fetch(
@@ -41,20 +42,20 @@ const CosmosTours = () => {
             <div className="">
               {data.map((tour, i) => (
                 <div key={i}>
-                  <TourCard tour={tour} />
+                  <TourCard tour={tour} brand={brand} season={season} />
                 </div>
               ))}
             </div>
           ) : (
             <>
-              {/* /////////// RENDERS BY FILTERING SEARCH STATE ////////// */}
+              {/* /////////// OTHERWISE FILTER BY SEARCH ////////// */}
               {data
                 .filter(tour =>
                   tour.Name.toLowerCase().includes(search.toLowerCase())
                 )
                 .map((tour, i) => (
                   <div key={i}>
-                    <TourCard tour={tour} />
+                    <TourCard tour={tour} brand={brand} season={season} />
                   </div>
                 ))}
             </>
