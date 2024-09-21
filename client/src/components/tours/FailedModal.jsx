@@ -73,7 +73,7 @@ const FailedModal = ({ open, setOpen }) => {
           </div>
         </div>
 
-        <div className="flex flex-col w-[100%]">
+        <div className="flex flex-col w-[100%] overflow-y-scroll">
           <p className="text-3xl md:text-5xl mt-3 text-sky-700 font-bold font-serif">
             How can we help?
           </p>
