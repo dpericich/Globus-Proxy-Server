@@ -31,7 +31,9 @@ const TourMediaDetails = () => {
         .then(res => {
           setSelectedTour(res)
           setIsLoading(false)
-        })
+        });
+
+      window.scrollTo(0, 0);
     } catch (e) {
       setIsLoading(false)
       setIsFailed(true)
