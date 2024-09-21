@@ -20,6 +20,7 @@ const CosmosTours = () => {
     )
       .then(res => res.json())
       .then(res => setData(res.data.filter(item => item.Brand === 'COSMOS')))
+    window.scrollTo(0, 0);
   }, [])
   console.log('this is the data', data)
 

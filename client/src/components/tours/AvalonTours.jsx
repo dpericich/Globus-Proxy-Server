@@ -10,6 +10,10 @@ const AvalonTours = () => {
   const [search, setSearch] = useState('')
   const brand = 'Avalon'
 
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  })
+
   // useEffect calls fetch for data
   // useEffect(() => {
   //   // fetch('http://localhost:8000/api/v1/globus/get-avalon-tours')
