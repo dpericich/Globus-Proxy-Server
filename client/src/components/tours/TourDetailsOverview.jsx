@@ -1,10 +1,15 @@
 import { useState, useEffect } from 'react'
 import Modal from './Modal'
 import TourStats from './TourStats'
+import logo from '../../assets/Safe Travels_LOGO FINAL.png'
 
 const TourDetailsOverview = ({ selectedTour, id, brand }) => {
   const [open, setOpen] = useState(false)
   const [priceDates, setPriceDates] = useState(null)
+
+  const defaultImage = e => {
+    e.target.src = logo
+  }
   //
   useEffect(() => {
     try {
@@ -35,6 +40,7 @@ const TourDetailsOverview = ({ selectedTour, id, brand }) => {
         <div className="flex justify-center py-5">
           <img
             src={`https://images.globusfamily.com/vacation/${id}.jpg`}
+            onError={e => defaultImage(e)}
             className="h-[100%] max-h-[300px] w-[100%] rounded-md"
           ></img>
         </div>
