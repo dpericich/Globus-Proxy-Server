@@ -16,6 +16,12 @@ const ThankYou = () => {
               An STGG team member will contact you directly over the next 24
               hours to secure your trip and answer any questions!
             </p>
+            <div className="text-white text-xl w-[100%] mt-5">
+              <p>I wish to pay my deposit and secure my trip NOW!</p>
+              <button className="rounded-md p-3 text-white bg-sky-700 w-[80%] md:w-[50%] hover:bg-sky-800 hover:scale-105 transition-all text-xl mt-3">
+                PAY MY DEPOSIT
+              </button>
+            </div>
 
             <Link to="/" className="text-white text-xl mt-10">
               Back to Home

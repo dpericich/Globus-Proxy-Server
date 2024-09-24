@@ -1,6 +1,5 @@
 const SearchBar = ({ search, setSearch }) => {
   return (
-    // <div className="bg-zinc-200 flex justify-start p-3 w-[100%]">
     <>
       <form
         onSubmit={e => e.preventDefault()}
@@ -17,8 +16,6 @@ const SearchBar = ({ search, setSearch }) => {
         />
       </form>
     </>
-
-    // </div>
   )
 }
 

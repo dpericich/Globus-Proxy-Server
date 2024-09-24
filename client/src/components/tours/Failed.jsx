@@ -4,7 +4,6 @@ import FailedModal from './FailedModal'
 
 const Failed = () => {
   const [open, setOpen] = useState(false)
-
   //
 
   return (

@@ -47,8 +47,6 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
         ...selectedItems.filter(item => item.label !== e.target.value),
       ])
     }
-
-    console.log('This', selectedItems)
   }
   //
   const handleSubmit = e => {
@@ -61,10 +59,9 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        senderName: 'scott@skywax.com',
-        senderEmail: 'scott@skywax.com',
+        senderName: 'info@safetravelsgg.com',
+        senderEmail: 'info@safetravelsgg.com',
         message: comments,
-        // date: new Date().toString(),
         clientName: clientName,
         clientEmail: clientEmail,
         phone: phone,
@@ -75,7 +72,6 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
         additionalInfo: selectedItems,
       }),
     })
-
     navigate('/thank-you')
   }
 
@@ -150,7 +146,7 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
                 ))}
               </select>
               {/* -------------- Checkboxes --------------- */}
-              <p className="text-left">
+              <p className="text-sm md:text-[12pt] text-left text-zinc-600 font-bold mt-3">
                 I would like additional information/assistance regarding:
               </p>
               {checkboxes.map((item, i) => (
@@ -159,10 +155,10 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
                     <input
                       type="checkbox"
                       value={item.label}
-                      // onChange={e => handleChecks(e.target.value)}
                       onChange={handleChecks}
+                      className=""
                     />
-                    {item.label}
+                    <span className="text-sm pl-2">{item.label}</span>
                   </label>
                 </div>
               ))}
@@ -170,7 +166,7 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
               {/* -------------- Comments --------------- */}
               <textarea
                 placeholder="Comments"
-                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3"
+                className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3 mt-3"
                 onChange={e => setComments(e.target.value)}
               ></textarea>
 

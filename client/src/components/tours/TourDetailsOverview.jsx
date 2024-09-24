@@ -13,11 +13,9 @@ const TourDetailsOverview = ({ selectedTour, id, brand }) => {
   //
   useEffect(() => {
     try {
-      // fetch('http://localhost:8000/api/v1/globus/get-departures', {
       fetch(
         'https://globus.safetravelsggapi.com/api/v1/globus/get-departures',
         {
-          // fetch('https://globus.sldevtestdomain.com/api/v1/globus/get-departures', {
           headers: {
             'Content-Type': 'application/json',
           },
@@ -37,7 +35,7 @@ const TourDetailsOverview = ({ selectedTour, id, brand }) => {
   return (
     <>
       <div className="grid grid-cols-1 md:grid-cols-3 w-[100%]">
-        <div className="flex justify-center py-5">
+        <div className="flex flex-col justify-between py-5">
           <img
             src={`https://images.globusfamily.com/vacation/${id}.jpg`}
             onError={e => defaultImage(e)}

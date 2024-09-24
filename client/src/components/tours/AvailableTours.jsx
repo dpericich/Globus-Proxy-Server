@@ -8,14 +8,13 @@ const AvailableTours = () => {
   const [search, setSearch] = useState('')
 
   useEffect(() => {
-    // fetch('http://localhost:8000/api/v1/globus/get-all-available-tours')
     fetch(
-      'https://globus.sldevtestdomain.com/api/v1/globus/get-all-available-tours'
+      'https://globus.safetravelsggapi.com/api/v1/globus/get-all-available-tours'
     )
       .then(res => res.json())
       .then(res => setData(res.data))
-    console.log('This...', data)
   }, [])
+  //
 
   return (
     <div className="flex flex-col">

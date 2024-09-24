@@ -1,5 +1,3 @@
-import React from 'react'
-
 const TourStats = ({ selectedTour, priceDates, setOpen }) => {
   // Reverse the Dates
   const reversDate = date => {
@@ -17,14 +15,16 @@ const TourStats = ({ selectedTour, priceDates, setOpen }) => {
               <p className="text-2xl md:text-3xl font-bold text-sky-700 font-serif">
                 From:{' '}
               </p>
+
               <p>
                 <span className="text-xl md:text-3xl text-zinc-600 pr-1">
-                  ${priceDates?.data[0].single}
+                  ${priceDates?.data[0].landOnlyPrice}
                 </span>
                 <span>(USD)</span>
               </p>
             </div>
           </div>
+
           {/* ------------- Dates ------------------ */}
           <div className="flex justify-center items-center w-[100%] h-[50%]">
             <div className="flex justify-between w-[90%] px-2 md:px-5">

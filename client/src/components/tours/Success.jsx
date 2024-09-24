@@ -20,7 +20,9 @@ const Success = ({ selectedTour, id, brand }) => {
         </div>
 
         {/* ----------- Itinerary ---------- */}
-
+        <p className="text-left text-xs md:text-sm mb-5 pl-7">
+          * Prices shown are per person based upon a double occupancy rate
+        </p>
         <div className="flex flex-col w-[100%]">
           <ItineraryCard selectedTour={selectedTour} />
         </div>

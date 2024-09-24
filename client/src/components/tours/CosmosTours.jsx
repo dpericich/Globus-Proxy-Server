@@ -11,20 +11,15 @@ const CosmosTours = () => {
   const brand = 'Cosmos'
 
   useEffect(() => {
-    // fetch('http://localhost:8000/api/v1/globus/get-all-available-tours')
-    // fetch(
-    //   'https://globus.sldevtestdomain.com/api/v1/globus/get-all-available-tours'
-    // )
     fetch(
       'https://globus.safetravelsggapi.com/api/v1/globus/get-all-available-tours'
     )
       .then(res => res.json())
       .then(res => setData(res.data.filter(item => item.Brand === 'COSMOS')))
-    window.scrollTo(0, 0);
+    window.scrollTo(0, 0)
   }, [])
-  console.log('this is the data', data)
+  //
 
-  // render Loading while 'null', else checks for search state and renders based off that
   return (
     <div className="flex flex-col">
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-[100%] py-1 px-3 bg-zinc-200">

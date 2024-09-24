@@ -1,4 +1,3 @@
-// This modal uses the same AWS Lambda url as the tour inquiryy form. Only difference is there is no Tour Name provided. The Lambda doesn't mind this and sends what data it does have.
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/Safe Travels_LOGO FINAL.png'
@@ -13,7 +12,6 @@ const FailedModal = ({ open, setOpen }) => {
   const [date, setDate] = useState('')
   const [comments, setComments] = useState('')
   //
-
   const inputs = [
     { placeholder: 'Name', onChange: setName },
     { placeholder: 'Email', onChange: setEmail },
@@ -32,8 +30,8 @@ const FailedModal = ({ open, setOpen }) => {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        senderName: 'scott@skywax.com',
-        senderEmail: 'scott@skywax.com',
+        senderName: 'info@safetravelsgg.com',
+        senderEmail: 'info@safetravelsgg.com',
         message: comments,
         clientName: name,
         clientEmail: email,
@@ -43,7 +41,6 @@ const FailedModal = ({ open, setOpen }) => {
         date: date,
       }),
     })
-
     navigate('/thank-you')
   }
 
@@ -129,40 +126,3 @@ const FailedModal = ({ open, setOpen }) => {
 }
 
 export default FailedModal
-
-// const handleSubmit = e => {
-//   e.stopPropagation()
-
-//   const data = {
-//     name,
-//     email,
-//     phone,
-//     location,
-//     time,
-//     date,
-//     comments,
-//   }
-
-//   // ------ fetch Lambda URL, send data, reset fileds ----
-//   const sendData = fetch(
-//     'https://6lp5x7v334.execute-api.us-west-2.amazonaws.com/send-email',
-//     {
-//       method: 'POST',
-//       mode: 'cors',
-//       cache: 'no-cache',
-//       body: JSON.stringify(data),
-//     }
-//   )
-//   sendData
-//     .then(res => res.json())
-//     .then(data => console.log('This is the data', data))
-
-//   setName('')
-//   setEmail('')
-//   setPhone('')
-//   setLocation('')
-//   setTime('')
-//   setDate('')
-//   setComments('')
-//   navigate('/thank-you')
-// }

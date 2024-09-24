@@ -1,18 +1,13 @@
-import { createContext, useState, useEffect } from 'react'
+import { createContext, useState } from 'react'
 
 export const GlobusToursContext = createContext()
 
 export const GlobusToursContextProvider = ({ children }) => {
   const [tours, setTours] = useState(null)
 
-  // fetch('http://localhost:8000/api/v1/globus/get-all-available-tours')
-  // fetch(
   fetch(
     'https://globus.safetravelsggapi.com/api/v1/globus/get-all-available-tours'
   )
-    // fetch(
-    //   'https://globus.sldevtestdomain.com/api/v1/globus/get-all-available-tours'
-    // )
     .then(res => res.json())
     .then(res => setTours(res?.data.filter(item => item.Brand === 'GLOBUS')))
 
