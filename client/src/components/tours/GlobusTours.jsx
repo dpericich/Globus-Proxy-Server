@@ -27,8 +27,8 @@ const GlobusTours = () => {
         }
       }
     })
-    setFilteredData(results);
-    window.scrollTo(0, 0);
+    setFilteredData(results)
+    // window.scrollTo(0, 0);
   }, [tours])
 
   // render Loading while 'null', else checks for search state and renders based off that

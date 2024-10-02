@@ -18,9 +18,13 @@ const ThankYou = () => {
             </p>
             <div className="text-white text-xl w-[100%] mt-5">
               <p>I wish to pay my deposit and secure my trip NOW!</p>
-              <button className="rounded-md p-3 text-white bg-sky-700 w-[80%] md:w-[50%] hover:bg-sky-800 hover:scale-105 transition-all text-xl mt-3">
-                PAY MY DEPOSIT
-              </button>
+              <Link
+                to={'https://www.safetravelsgg.com/product/Security-Deposit'}
+              >
+                <button className="rounded-md p-3 text-white bg-sky-700 w-[80%] md:w-[50%] hover:bg-sky-800 hover:scale-105 transition-all text-xl mt-3">
+                  PAY MY DEPOSIT
+                </button>
+              </Link>
             </div>
 
             <Link to="/" className="text-white text-xl mt-10">

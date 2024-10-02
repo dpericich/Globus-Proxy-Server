@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/Safe Travels_LOGO FINAL.png'
+import { Link } from 'react-router-dom'
 
 const Modal = ({ open, onClose, selectedTour, priceDates }) => {
   //
@@ -23,8 +24,11 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
     { onChange: setClientName, placeholder: 'name' },
     { onChange: setClientEmail, placeholder: 'email' },
     { onChange: setPhone, placeholder: 'phone' },
-    { onChange: setLocation, placeholder: 'location' },
-    { onChange: setTime, placeholder: 'time' },
+    { onChange: setLocation, placeholder: 'your city, state, country' },
+    {
+      onChange: setTime,
+      placeholder: 'best time to contact you?',
+    },
   ]
   //
   const checkboxes = [
@@ -123,7 +127,7 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
                   key={i}
                   type="text"
                   placeholder={item.placeholder}
-                  className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3"
+                  className="text-xs md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3"
                   onChange={e => item.onChange(e.target.value)}
                 />
               ))}
@@ -135,7 +139,7 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
                 onChange={e => setDate(e.target.value)}
                 className="text-sm md:text-md shadow-inner shadow-zinc-300 rounded-md p-2 md:px-3"
               >
-                <option>Please select a preferred start date</option>
+                <option>Please select preferred start date</option>
                 {priceDates?.data?.map((item, i) => (
                   <option
                     key={i}
