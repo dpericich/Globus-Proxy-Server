@@ -1,4 +1,3 @@
-// calling the data in context and then filtering in component with use effect
 import { useState, useEffect, useContext } from 'react'
 import { GlobusToursContext } from '../../context/GlobusContext'
 import SearchBar from '../SearchBar'
@@ -14,8 +13,7 @@ const GlobusTours = () => {
   const brand = 'Globus'
   //
   const { tours } = useContext(GlobusToursContext)
-  // console.log('this is the tours', tours)
-
+  //
   useEffect(() => {
     setData(tours)
     const results = []

@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
-import logo from '../../assets/Safe Travels_LOGO FINAL.png'
+import logo from '../../../assets/Safe Travels_LOGO FINAL.png'
 
-const TourCard = ({ tour, brand }) => {
+const AvalonTourCard = ({ tour, brand }) => {
   const defaultImage = e => {
     e.target.src = logo
   }
@@ -30,4 +30,4 @@ const TourCard = ({ tour, brand }) => {
   )
 }
 
-export default TourCard
+export default AvalonTourCard

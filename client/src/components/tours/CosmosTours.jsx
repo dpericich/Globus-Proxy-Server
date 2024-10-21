@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext, useRef } from 'react'
+import { useState, useEffect, useContext } from 'react'
 import { CosmosToursContext } from '../../context/CosmosContext'
 import SearchBar from '../SearchBar'
 import Loading from '../Loading'
@@ -8,10 +8,6 @@ import { filters } from '../../locationFilters'
 import { useLocation } from 'react-router-dom'
 
 const CosmosTours = () => {
-  const location = useLocation()
-  const [scrollPosition, setScrollPosition] = useState()
-  const scrollRef = useRef()
-  //
   const [data, setData] = useState(null)
   const [filteredData, setFilteredData] = useState(null)
   const [search, setSearch] = useState('')
@@ -19,46 +15,18 @@ const CosmosTours = () => {
   const brand = 'Cosmos'
   //
   const { tours } = useContext(CosmosToursContext)
+  // set scroll position state
+  // const [scrollPosition, setScrollPosition] = useState()
+  const location = useLocation()
+
   //
-  // const handleScroll = e => {
-  //   setScrollPosition(e.target.scrollTop)
-  // }
-  //
-  // useEffect(() => {
-  //   if (location.state) {
-  //     const { scrollPosition } = location.state
-  //     setData(tours)
-  //     const results = []
-
-  //     tours?.forEach(item => {
-  //       for (let i = 0; i < item.Name.split(' ').length; i++) {
-  //         if (filters.includes(item.Name.split(' ')[i])) {
-  //           results.push(item)
-  //         }
-  //       }
-  //     })
-  //     setFilteredData(results)
-  //     scrollRef.current.style.backgroundColor = 'red'
-  //     setTimeout(() => {
-  //       scrollRef.current.scrollTop = scrollPosition
-  //     }, 10)
-  //   } else {
-  //     setData(tours)
-  //     const results = []
-
-  //     tours?.forEach(item => {
-  //       for (let i = 0; i < item.Name.split(' ').length; i++) {
-  //         if (filters.includes(item.Name.split(' ')[i])) {
-  //           results.push(item)
-  //         }
-  //       }
-  //     })
-  //     setFilteredData(results)
-  //   }
-  // }, [])
-
-  // console.log('This...', location)
+  window.addEventListener('scroll', console.log('This shit', window.scrollY))
   useEffect(() => {
+    // will set position on current Y
+    // const handleScroll = () => setScrollPosition(window.scrollY)
+    // //
+    // window.addEventListener('scroll', handleScroll)
+    //
     setData(tours)
     const results = []
 
@@ -71,10 +39,16 @@ const CosmosTours = () => {
     })
     setFilteredData(results)
     // window.scrollTo(0, 0)
+    // return () => window.removeEventListener('scroll', handleScroll)
   }, [tours])
+  //
+  // useEffect(() => {
+  //   // Scroll to the saved position
+  //   window.scrollTo(0, scrollPosition)
+  // }, [scrollPosition])
 
   return (
-    <div ref={scrollRef} className="flex flex-col">
+    <div className="flex flex-col">
       <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-[100%] py-1 px-3 bg-zinc-200">
         <div className="flex justify-start items-center my-1">
           <SearchBar search={search} setSearch={setSearch} />
@@ -122,27 +96,3 @@ const CosmosTours = () => {
 }
 
 export default CosmosTours
-// useEffect(() => {
-//   setData(tours)
-//   const results = []
-
-//   tours?.forEach(item => {
-//     for (let i = 0; i < item.Name.split(' ').length; i++) {
-//       if (filters.includes(item.Name.split(' ')[i])) {
-//         results.push(item)
-//       }
-//     }
-//   })
-//   setFilteredData(results)
-//   // window.scrollTo(0, 0)
-// }, [tours])
-
-// useEffect(() => {
-//   fetch(
-//     'https://globus.safetravelsggapi.com/api/v1/globus/get-all-available-tours'
-//   )
-//     .then(res => res.json())
-//     .then(res => setData(res.data.filter(item => item.Brand === 'COSMOS')))
-//   window.scrollTo(0, 0)
-// }, [])
-// console.log('This...', data?.length)

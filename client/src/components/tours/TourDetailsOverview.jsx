@@ -1,7 +1,10 @@
+// They reported that a single freaking Tour overview (Oh My Goddess: Greece) was displaying rando HTML chars so we'll check the overviews and use a filterOverview function
+
 import { useState, useEffect } from 'react'
 import Modal from './Modal'
 import TourStats from './TourStats'
 import logo from '../../assets/Safe Travels_LOGO FINAL.png'
+//
 
 const TourDetailsOverview = ({ selectedTour, id, brand }) => {
   const [open, setOpen] = useState(false)
@@ -31,6 +34,12 @@ const TourDetailsOverview = ({ selectedTour, id, brand }) => {
       console.error(`Error: ${e}`)
     }
   }, [])
+
+  // filtering out rando HTML chars from overview ('Oh My Goddess!: Greece By Design )
+  const filterOverview = overview => {
+    return `${overview?.split('</BR></BR><SPAN')[0]}
+       Why ${overview?.split('CLASS=choice>Why')[1]}`
+  }
   //
   return (
     <>
@@ -44,7 +53,20 @@ const TourDetailsOverview = ({ selectedTour, id, brand }) => {
         </div>
         <div className="col-span-2 md:px-7 md:py-5 text-left">
           <p className="text-sm md:text-[12pt] leading-6 text-zinc-500 mb-3">
-            {selectedTour?.data['Vacation Overview']}
+            {/* CHECKING FROM RANDO HTML - if true, using dangerouslySetInnerHTML */}
+            {selectedTour?.data['Vacation Overview']
+              .split(' ')
+              .includes('CLASS=choice>Why') ? (
+              <span
+                dangerouslySetInnerHTML={{
+                  __html: filterOverview(
+                    selectedTour?.data['Vacation Overview']
+                  ),
+                }}
+              ></span>
+            ) : (
+              <span>{selectedTour?.data['Vacation Overview']}</span>
+            )}
           </p>
         </div>
       </div>

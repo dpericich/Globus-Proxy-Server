@@ -1,26 +1,33 @@
-import { useState, useEffect } from 'react'
-import SearchBar from '../SearchBar'
-import Loading from '../Loading'
-import TourCard from './TourCard'
-import logo from '../../../public/avalon.png'
-import { Link } from 'react-router-dom'
+import { useState, useEffect, useContext } from 'react'
+import SearchBar from '../../SearchBar'
+import Loading from '../../Loading'
+import logo from '../../../../public/avalon.png'
+import { filters } from '../../../locationFilters'
+import { AvalonToursContext } from '../../../context/AvalonContext'
+import AvalonTourCard from './AvalonTourCard'
 
 const AvalonTours = () => {
   const [data, setData] = useState(null)
+  const [filteredData, setFilteredData] = useState(null)
   const [search, setSearch] = useState('')
   const brand = 'Avalon'
-
+  //
+  const { tours } = useContext(AvalonToursContext)
+  //
   useEffect(() => {
-    window.scrollTo(0, 0)
-  })
+    setData(tours)
+    const results = []
 
-  // useEffect calls fetch for data
-  // useEffect(() => {
-  //   fetch('https://globus.safetravelsggapi.com/api/v1/globus/get-avalon-tours')
-  //     .then(res => res.json())
-  //     .then(res => setData(res.data))
-  //   console.log('This is avalon...', data)
-  // }, [])
+    tours?.forEach(item => {
+      for (let i = 0; i < item.Name.split(' ').length; i++) {
+        if (filters.includes(item.Name.split(' ')[i])) {
+          results.push(item)
+        }
+      }
+    })
+    setFilteredData(results)
+    // window.scrollTo(0, 0)
+  }, [tours])
 
   // render Loading while 'null', else checks for search state and renders based off that
   return (
@@ -33,12 +40,8 @@ const AvalonTours = () => {
           <img src={logo} className="h-[20px] md:h-[27px] my-2"></img>
         </div>
       </div>
-      <div className="h-96 flex flex-col gap-4 justify-center">
-        <p className="text-2xl md:text-5xl text-sky-700">COMING SOON</p>
-        <Link to="/">Back to Home</Link>
-      </div>
 
-      {/* {data === null ? (
+      {data === null ? (
         <>
           <Loading />
         </>
@@ -46,9 +49,9 @@ const AvalonTours = () => {
         <div className="">
           {search === '' ? (
             <div className="">
-              {data.map((tour, i) => (
+              {filteredData.map((tour, i) => (
                 <div key={i}>
-                  <TourCard tour={tour} brand={brand} />
+                  <AvalonTourCard tour={tour} brand={brand} />
                 </div>
               ))}
             </div>
@@ -60,13 +63,13 @@ const AvalonTours = () => {
                 )
                 .map((tour, i) => (
                   <div key={i}>
-                    <TourCard tour={tour} brand={brand} />
+                    <AvalonTourCard tour={tour} brand={brand} />
                   </div>
                 ))}
             </>
           )}
         </div>
-      )} */}
+      )}
     </div>
   )
 }

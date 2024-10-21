@@ -13,7 +13,7 @@ const ThankYou = () => {
 
           <div className="flex flex-col gap-4 justify-center items-center bg-black/40 md:px-40 w-[100%] h-[60%]">
             <p className="text-white text-xl">
-              An STGG team member will contact you directly over the next 24
+              A STGG team member will contact you directly over the next 24
               hours to secure your trip and answer any questions!
             </p>
             <div className="text-white text-xl w-[100%] mt-5">

@@ -4,7 +4,7 @@ const TourStats = ({ selectedTour, priceDates, setOpen }) => {
     let dateSplit = date.split('-')
     return `${dateSplit[1]}-${dateSplit[2]}-${dateSplit[0]}`
   }
-  console.log('TOUR STATS', priceDates)
+
   return (
     <div className="w-[100%] bg-zinc-100 rounded-lg shadow-md shadow-zinc-200 mb-5">
       <div className="grid grid-cols-1 md:grid-cols-2">
