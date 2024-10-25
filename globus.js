@@ -17,6 +17,8 @@ const callGetBasicHotelMedia = require('./globusEndpoints/getBasicHotelMedia')
 const callGetBasicHotelMediaByTour = require('./globusEndpoints/getBasicHotelMediaByTour')
 const callGetHotelMediaByTourCode = require('./globusEndpoints/getHotelMediaByTourCode')
 const callGetAvalonTours = require('./globusEndpoints/getAvalonTours')
+const callGetAvailableMediaTours = require('./globusEndpoints/getAvailableMediaTours')
+const callGetAllAvailableMediaTours = require('./globusEndpoints/getAllAvailableMediaTours')
 
 // This controller will handle each of our Globus endpoints
 
@@ -27,6 +29,28 @@ const callGetAvalonTours = require('./globusEndpoints/getAvalonTours')
 //////////////// TOURS  //////////////////
 //////////////////////////////////////////
 
+router.get('/get-all-available-media-tours', async (req, res) => {
+  try {
+    const data = await callGetAllAvailableMediaTours()
+    res.status(200).json({ data })
+  } catch (e) {
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
+  }
+})
+
+router.get('/get-available-media-tours', async (req, res) => {
+  const { brand } = req.body
+  try {
+    const data = await callGetAvailableMediaTours(brand)
+    res.status(200).json({ data })
+  } catch (e) {
+    res
+      .status(500)
+      .json({ message: 'Sorry - Internal Server Errror', error: e })
+  }
+})
 router.get('/get-all-available-tours', async (req, res) => {
   try {
     const data = await callGetAllAvailableTours()
@@ -69,13 +93,20 @@ router.get('/get-tour-day-media-by-brand', async (req, res) => {
 
 // WIP - Scott
 router.post('/get-tour-media', async (req, res) => {
+  // console.log('THIS IS YEAR', req.body.year)
   try {
-    const data = await callGetTourMedia(req.body.tourNumber)
+    const data = await callGetTourMedia(req.body.tourNumber, req.body.year)
     res.status(200).json({ data })
   } catch (e) {
     res.status(500).json({ message: 'Sorry - Internal Server Error', error: e })
   }
 })
+// router.post('/get-tour-media', async (req, res) => {
+//   console.log('THIS IS YEAR', req.body.year)
+
+//   const data = await callGetTourMedia(req.body.tourNumber)
+//   res.status(200).json({ data })
+// })
 
 router.get('/get-tour-media-by-brand', async (req, res) => {
   try {

@@ -10,18 +10,21 @@ const call = async xmlBody => {
       let jsonData = JSON.parse(result)
 
       return jsonData['soap:Envelope']['soap:Body'][
-        'GetAllAvailableToursResponse'
-      ]['GetAllAvailableToursResult']['diffgr:diffgram']['NewDataSet']['Table1']
+        'GetAllAvailableMediaToursResponse'
+      ]['GetAllAvailableMediaToursResult']['diffgr:diffgram']['NewDataSet'][
+        'Table1'
+      ]
     })
 
-  return serializeGetAllAvailableTours(unformattedJSON)
+  return serializeGetAllAvailableMediaTours(unformattedJSON)
 }
 
-const serializeGetAllAvailableTours = data => {
+const serializeGetAllAvailableMediaTours = data => {
   return data.map(record => {
     let newHash = {}
 
     newHash['TourNumber'] = record['TourNumber']['_text']
+    newHash['Season'] = record['Season']['_text']
     newHash['Brand'] = record['Brand']['_text']
     newHash['Name'] = record['Name']['_text']
     newHash[
@@ -32,17 +35,19 @@ const serializeGetAllAvailableTours = data => {
   })
 }
 
-const callGetAllAvailableTours = async () => {
+const callGetAllAvailableMediaTours = async () => {
   const xmlBody = `<?xml version="1.0" encoding="utf-8"?>
-    <soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
-      <soap:Body>
-        <GetAllAvailableTours xmlns="http://webapi.globusandcosmos.com/" />
-      </soap:Body>
-    </soap:Envelope>`
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+  <soap:Body>
+    <GetAllAvailableMediaTours xmlns="http://webapi.globusandcosmos.com/" />
+  </soap:Body>
+</soap:Envelope>
+
+`
 
   const data = await call(xmlBody)
 
   return data
 }
 
-module.exports = callGetAllAvailableTours
+module.exports = callGetAllAvailableMediaTours

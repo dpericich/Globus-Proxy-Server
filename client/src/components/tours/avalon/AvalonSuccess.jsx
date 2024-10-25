@@ -2,8 +2,8 @@ import TourDetailsOverview from './../TourDetailsOverview'
 import ItineraryCard from './../ItineraryCard'
 
 const AvalonSuccess = ({ selectedTour, id, brand }) => {
-  console.log('This is the selected tour', selectedTour)
   return (
+    // <p>TEST</p>
     <>
       <div className="flex flex-col justify-start items-start bg-white rounded-xl pb-5">
         {/* ----------- Title Banner ---------- */}
@@ -13,11 +13,11 @@ const AvalonSuccess = ({ selectedTour, id, brand }) => {
           </p>
         </div>
         <div>
-          {/* <TourDetailsOverview
+          <TourDetailsOverview
             selectedTour={selectedTour}
             id={id}
             brand={brand}
-          /> */}
+          />
         </div>
 
         {/* ----------- Itinerary ---------- */}
@@ -25,7 +25,7 @@ const AvalonSuccess = ({ selectedTour, id, brand }) => {
           * Prices shown are per person based upon a double occupancy rate
         </p>
         <div className="flex flex-col w-[100%]">
-          {/* <ItineraryCard selectedTour={selectedTour} /> */}
+          <ItineraryCard selectedTour={selectedTour} />
         </div>
       </div>
     </>

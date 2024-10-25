@@ -5,14 +5,15 @@ import logo from '../../../../public/avalon.png'
 import { filters } from '../../../locationFilters'
 import { AvalonToursContext } from '../../../context/AvalonContext'
 import AvalonTourCard from './AvalonTourCard'
+// import TourCard from '../TourCard'
 
 const AvalonTours = () => {
   const [data, setData] = useState(null)
   const [filteredData, setFilteredData] = useState(null)
   const [search, setSearch] = useState('')
   const brand = 'Avalon'
-  //
   const { tours } = useContext(AvalonToursContext)
+  console.log('This is Avalon list comp', tours)
   //
   useEffect(() => {
     setData(tours)
@@ -52,6 +53,7 @@ const AvalonTours = () => {
               {filteredData.map((tour, i) => (
                 <div key={i}>
                   <AvalonTourCard tour={tour} brand={brand} />
+                  {/* <TourCard tour={tour} brand={brand} /> */}
                 </div>
               ))}
             </div>
@@ -64,6 +66,7 @@ const AvalonTours = () => {
                 .map((tour, i) => (
                   <div key={i}>
                     <AvalonTourCard tour={tour} brand={brand} />
+                    {/* <TourCard tour={tour} brand={brand} /> */}
                   </div>
                 ))}
             </>

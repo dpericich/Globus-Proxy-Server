@@ -6,7 +6,7 @@ import Failed from '../Failed'
 import AvalonSuccess from './AvalonSuccess'
 
 const AvalonTourMediaDetails = () => {
-  const { id, brand, year } = useParams()
+  const { id, brand } = useParams()
 
   const [selectedTour, setSelectedTour] = useState(null)
   const [isLoading, setIsLoading] = useState(true)

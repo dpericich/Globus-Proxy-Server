@@ -6,7 +6,8 @@ import Success from './Success'
 import Failed from './Failed'
 
 const TourMediaDetails = () => {
-  const { id, brand } = useParams()
+  const { id, brand, year } = useParams()
+  // console.log('This is the year', year)
 
   const [selectedTour, setSelectedTour] = useState(null)
   const [isLoading, setIsLoading] = useState(true)
@@ -21,7 +22,7 @@ const TourMediaDetails = () => {
             'Content-Type': 'application/json',
           },
           method: 'POST',
-          body: JSON.stringify({ tourNumber: id }),
+          body: JSON.stringify({ tourNumber: id, year: year }),
         }
       )
         .then(res => res.json())
@@ -29,7 +30,6 @@ const TourMediaDetails = () => {
           setSelectedTour(res)
           setIsLoading(false)
         })
-
       window.scrollTo(0, 0)
     } catch (e) {
       setIsLoading(false)

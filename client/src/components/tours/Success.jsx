@@ -2,7 +2,6 @@ import TourDetailsOverview from './TourDetailsOverview'
 import ItineraryCard from './ItineraryCard'
 
 const Success = ({ selectedTour, id, brand }) => {
-  console.log('This is the selected tour', selectedTour)
   return (
     <>
       <div className="flex flex-col justify-start items-start bg-white rounded-xl pb-5">

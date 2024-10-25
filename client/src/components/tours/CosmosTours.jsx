@@ -5,31 +5,18 @@ import Loading from '../Loading'
 import TourCard from './TourCard'
 import logo from '../../../public/cosmos.png'
 import { filters } from '../../locationFilters'
-import { useLocation } from 'react-router-dom'
 
 const CosmosTours = () => {
   const [data, setData] = useState(null)
   const [filteredData, setFilteredData] = useState(null)
   const [search, setSearch] = useState('')
-  const [season, setSeason] = useState(null)
   const brand = 'Cosmos'
-  //
   const { tours } = useContext(CosmosToursContext)
-  // set scroll position state
-  // const [scrollPosition, setScrollPosition] = useState()
-  const location = useLocation()
+  console.log('This is Cosmos list comp', tours)
 
-  //
-  window.addEventListener('scroll', console.log('This shit', window.scrollY))
   useEffect(() => {
-    // will set position on current Y
-    // const handleScroll = () => setScrollPosition(window.scrollY)
-    // //
-    // window.addEventListener('scroll', handleScroll)
-    //
     setData(tours)
     const results = []
-
     tours?.forEach(item => {
       for (let i = 0; i < item.Name.split(' ').length; i++) {
         if (filters.includes(item.Name.split(' ')[i])) {
@@ -38,14 +25,7 @@ const CosmosTours = () => {
       }
     })
     setFilteredData(results)
-    // window.scrollTo(0, 0)
-    // return () => window.removeEventListener('scroll', handleScroll)
   }, [tours])
-  //
-  // useEffect(() => {
-  //   // Scroll to the saved position
-  //   window.scrollTo(0, scrollPosition)
-  // }, [scrollPosition])
 
   return (
     <div className="flex flex-col">
@@ -64,27 +44,23 @@ const CosmosTours = () => {
         </>
       ) : (
         <div className="">
-          {/* /////////// IF SEARCH EMPTY RENDER ALL ////////// */}
           {search === '' ? (
             <div className="">
-              {/* {data.map((tour, i) => ( */}
               {filteredData?.map((tour, i) => (
                 <div key={i}>
-                  <TourCard tour={tour} brand={brand} season={season} />
+                  <TourCard tour={tour} brand={brand} />
                 </div>
               ))}
             </div>
           ) : (
             <>
-              {/* /////////// OTHERWISE FILTER BY SEARCH ////////// */}
-              {/* {data */}
               {filteredData
                 ?.filter(tour =>
                   tour.Name.toLowerCase().includes(search.toLowerCase())
                 )
                 .map((tour, i) => (
                   <div key={i}>
-                    <TourCard tour={tour} brand={brand} season={season} />
+                    <TourCard tour={tour} brand={brand} />
                   </div>
                 ))}
             </>

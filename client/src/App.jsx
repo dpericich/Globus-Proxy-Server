@@ -29,6 +29,10 @@ function App() {
                   element={<TourMediaDetails />}
                 />
                 <Route
+                  path="/avalon/tour-media/:id/:brand"
+                  element={<AvalonTourMediaDetails />}
+                />
+                <Route
                   path="/avalon-tour-media/:id/:brand"
                   element={<AvalonTourMediaDetails />}
                 />

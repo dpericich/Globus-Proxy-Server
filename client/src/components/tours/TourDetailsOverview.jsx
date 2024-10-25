@@ -1,19 +1,18 @@
-// They reported that a single freaking Tour overview (Oh My Goddess: Greece) was displaying rando HTML chars so we'll check the overviews and use a filterOverview function
-
+// 10/17 They reported that a single freaking Tour overview (Oh My Goddess: Greece) was displaying rando HTML chars so we'll check the overviews and use a filterOverview function
 import { useState, useEffect } from 'react'
 import Modal from './Modal'
 import TourStats from './TourStats'
 import logo from '../../assets/Safe Travels_LOGO FINAL.png'
-//
 
 const TourDetailsOverview = ({ selectedTour, id, brand }) => {
   const [open, setOpen] = useState(false)
+  const [prices, setPrices] = useState(null)
   const [priceDates, setPriceDates] = useState(null)
 
   const defaultImage = e => {
     e.target.src = logo
   }
-  //
+
   useEffect(() => {
     try {
       fetch(
@@ -29,6 +28,7 @@ const TourDetailsOverview = ({ selectedTour, id, brand }) => {
         .then(res => res.json())
         .then(res => {
           setPriceDates(res)
+          setPrices(res.data?.map(item => Number(item.landOnlyPrice)))
         })
     } catch (e) {
       console.error(`Error: ${e}`)
@@ -73,6 +73,7 @@ const TourDetailsOverview = ({ selectedTour, id, brand }) => {
       <TourStats
         selectedTour={selectedTour}
         priceDates={priceDates}
+        prices={prices}
         setOpen={setOpen}
       />
 

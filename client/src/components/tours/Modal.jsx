@@ -1,14 +1,9 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import logo from '../../assets/Safe Travels_LOGO FINAL.png'
-import { Link } from 'react-router-dom'
+import { reverseDate } from '../../utils/helpers'
 
 const Modal = ({ open, onClose, selectedTour, priceDates }) => {
-  //
-  const reverseDate = date => {
-    let dateSplit = date.split('-')
-    return `${dateSplit[1]}-${dateSplit[2]}-${dateSplit[0]}`
-  }
   //
   const navigate = useNavigate()
   const [clientName, setClientName] = useState('')
@@ -141,12 +136,25 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
               >
                 <option>Please select preferred start date</option>
                 {priceDates?.data?.map((item, i) => (
-                  <option
-                    key={i}
-                    value={reverseDate(item?.airStartDate.slice(0, 10))}
-                  >
-                    {reverseDate(item?.airStartDate.slice(0, 10))}
-                  </option>
+                  <>
+                    {item.status === 'Available' ? (
+                      <>
+                        <option key={item.name} className="border-4 text-black">
+                          {`Start: ${reverseDate(
+                            item.landStartDate.slice(0, 10)
+                          )}`}
+                        </option>
+                      </>
+                    ) : (
+                      <></>
+                    )}
+                  </>
+                  // <option
+                  //   key={i}
+                  //   value={reverseDate(item?.airStartDate.slice(0, 10))}
+                  // >
+                  //   {reverseDate(item?.airStartDate.slice(0, 10))}
+                  // </option>
                 ))}
               </select>
               {/* -------------- Checkboxes --------------- */}

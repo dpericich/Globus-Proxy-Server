@@ -1,5 +1,4 @@
 import { createContext, useEffect, useState } from 'react'
-
 export const CosmosToursContext = createContext()
 
 export const CosmosToursContextProvider = ({ children }) => {
@@ -7,7 +6,8 @@ export const CosmosToursContextProvider = ({ children }) => {
 
   useEffect(() => {
     fetch(
-      'https://globus.safetravelsggapi.com/api/v1/globus/get-all-available-tours'
+      // 'https://globus.safetravelsggapi.com/api/v1/globus/get-all-available-tours'
+      'http://localhost:8000/api/v1/globus/get-all-available-media-tours'
     )
       .then(res => res.json())
       .then(res => setTours(res?.data.filter(item => item.Brand === 'COSMOS')))
