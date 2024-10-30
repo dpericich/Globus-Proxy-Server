@@ -20,7 +20,17 @@ const call = async xmlBody => {
 }
 
 const serializeGetAllAvailableMediaTours = data => {
-  return data.map(record => {
+  let uniqueToursHash = {}
+
+  const newData = data.map(record => {
+    const tourNumber = record['TourNumber']['_text'];
+    const recordExists = checkForDuplicateRecord(tourNumber, uniqueToursHash);
+    uniqueToursHash[tourNumber] = tourNumber;
+
+    if (recordExists) {
+      return;
+    };
+
     let newHash = {}
 
     newHash['TourNumber'] = record['TourNumber']['_text']
@@ -33,6 +43,12 @@ const serializeGetAllAvailableMediaTours = data => {
 
     return newHash
   })
+
+  return newData.filter(record => record !== undefined);
+}
+
+const checkForDuplicateRecord = (tourNumber, existingRecordHash) => {
+  return existingRecordHash[tourNumber] == tourNumber ? true : false;
 }
 
 const callGetAllAvailableMediaTours = async () => {
