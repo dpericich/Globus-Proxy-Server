@@ -138,23 +138,15 @@ const Modal = ({ open, onClose, selectedTour, priceDates }) => {
                 {priceDates?.data?.map((item, i) => (
                   <>
                     {item.status === 'Available' ? (
-                      <>
-                        <option key={item.name} className="border-4 text-black">
-                          {`Start: ${reverseDate(
-                            item.landStartDate.slice(0, 10)
-                          )}`}
-                        </option>
-                      </>
+                      <option key={i} className="border-4 text-black">
+                        {`Start: ${reverseDate(
+                          item.landStartDate.slice(0, 10)
+                        )}`}
+                      </option>
                     ) : (
                       <></>
                     )}
                   </>
-                  // <option
-                  //   key={i}
-                  //   value={reverseDate(item?.airStartDate.slice(0, 10))}
-                  // >
-                  //   {reverseDate(item?.airStartDate.slice(0, 10))}
-                  // </option>
                 ))}
               </select>
               {/* -------------- Checkboxes --------------- */}

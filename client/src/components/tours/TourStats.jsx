@@ -32,18 +32,26 @@ const TourStats = ({ selectedTour, priceDates, prices, setOpen }) => {
                 {priceDates?.data?.map((item, i) => (
                   <>
                     {item.status === 'Available' ? (
-                      <>
-                        <option key={item.name} className="border-4 text-black">
-                          {`Start: ${reverseDate(
-                            item.landStartDate.slice(0, 10)
-                          )}`}
-                        </option>
-                      </>
+                      <option key={i} className="border-4 text-black">
+                        {`Start: ${reverseDate(
+                          item.landStartDate.slice(0, 10)
+                        )}`}
+                      </option>
                     ) : (
                       <></>
                     )}
                   </>
                 ))}
+                {/* {priceDates?.data?.map((item, i) => {
+                  {item.status === 'Available' ? (
+                    <option key={i} className="border-4 text-black">
+                      {`Start: ${reverseDate(item.landStartDate.slice(0, 10))}`}
+                    </option>
+                  ) : (
+                    <></>
+                  )
+                }
+                })} */}
               </select>
             </div>
           </div>

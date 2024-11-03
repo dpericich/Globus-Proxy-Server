@@ -8,8 +8,8 @@ const AvalonTourCard = ({ tour, brand }) => {
 
   return (
     <Link
-      // to={`https://safetravelsggtours.com/tour-media/${tour.TourNumber}/${brand}`}
-      to={`http://localhost:5173/avalon/tour-media/${tour.TourNumber}/${brand}`}
+      to={`https://safetravelsggtours.com/tour-media/${tour.TourNumber}/${brand}`}
+      // to={`http://localhost:5173/avalon/tour-media/${tour.TourNumber}/${brand}`}
       className="flex flex-col justify-center items-center"
     >
       <div className="grid grid-cols-1 md:grid-cols-5 m-4 hover:scale-105 transition-all w-[90%]">

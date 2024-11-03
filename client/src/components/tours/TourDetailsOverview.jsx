@@ -13,15 +13,22 @@ const TourDetailsOverview = ({ selectedTour, id, brand }) => {
     e.target.src = logo
   }
 
+  // TRYING GET DEPARTURES BY SEASON HERE TO NO AVAIL
   useEffect(() => {
     try {
       fetch(
+        // 'https://globus.safetravelsggapi.com/api/v1/globus/get-departures-by-season',
         'https://globus.safetravelsggapi.com/api/v1/globus/get-departures',
         {
           headers: {
             'Content-Type': 'application/json',
           },
           method: 'POST',
+          // body: JSON.stringify({
+          //   tourNumber: id,
+          //   brand: brand,
+          //   season: '2025',
+          // }),
           body: JSON.stringify({ tourNumber: id, brand: brand }),
         }
       )

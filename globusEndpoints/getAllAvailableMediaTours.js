@@ -23,13 +23,15 @@ const serializeGetAllAvailableMediaTours = data => {
   let uniqueToursHash = {}
 
   const newData = data.map(record => {
-    const tourNumber = record['TourNumber']['_text'];
-    const recordExists = checkForDuplicateRecord(tourNumber, uniqueToursHash);
-    uniqueToursHash[tourNumber] = tourNumber;
+    const tourNumber = record['TourNumber']['_text']
+    const tourYear = record['Season']['_text']
+    // const tourName = record['Name']['_text']
+    const recordExists = checkForDuplicateRecord(tourNumber, uniqueToursHash)
+    uniqueToursHash[tourNumber] = tourNumber
 
-    if (recordExists) {
-      return;
-    };
+    if (recordExists || tourYear === '2024') {
+      return
+    }
 
     let newHash = {}
 
@@ -44,11 +46,11 @@ const serializeGetAllAvailableMediaTours = data => {
     return newHash
   })
 
-  return newData.filter(record => record !== undefined);
+  return newData.filter(record => record !== undefined)
 }
 
 const checkForDuplicateRecord = (tourNumber, existingRecordHash) => {
-  return existingRecordHash[tourNumber] == tourNumber ? true : false;
+  return existingRecordHash[tourNumber] == tourNumber ? true : false
 }
 
 const callGetAllAvailableMediaTours = async () => {

@@ -19,6 +19,7 @@ const callGetHotelMediaByTourCode = require('./globusEndpoints/getHotelMediaByTo
 const callGetAvalonTours = require('./globusEndpoints/getAvalonTours')
 const callGetAvailableMediaTours = require('./globusEndpoints/getAvailableMediaTours')
 const callGetAllAvailableMediaTours = require('./globusEndpoints/getAllAvailableMediaTours')
+const callGetDeparturesBySeason = require('./globusEndpoints/getDeparturesBySeason')
 
 // This controller will handle each of our Globus endpoints
 
@@ -232,7 +233,6 @@ router.get('/get-departure-pricing', async (req, res) => {
 
 router.post('/get-departures', async (req, res) => {
   try {
-    // const data = await callGetDepartures();
     const { tourNumber, brand } = req.body
     const data = await callGetDepartures(tourNumber, brand)
     res.status(200).json({ data })
@@ -246,7 +246,8 @@ router.post('/get-departures', async (req, res) => {
 // WIP - Scott
 router.get('/get-departures-by-season', async (req, res) => {
   try {
-    const data = await callGetDeparturesBySeason()
+    const { tourNumber, brand, season } = req.body
+    const data = await callGetDeparturesBySeason(tourNumber, brand, season)
     res.status(200).json({ data })
   } catch (e) {
     res
