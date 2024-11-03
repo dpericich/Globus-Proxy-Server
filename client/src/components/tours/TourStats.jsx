@@ -1,7 +1,8 @@
 // 10/24 - added a ternary to the dates to exclude status: 'Nnot Available'
-import { sortPrice, reverseDate } from '../../utils/helpers'
+import { sortPrice, showCurrency, reverseDate, setMissingDateAndPriceTextSize } from '../../utils/helpers'
 
 const TourStats = ({ selectedTour, priceDates, prices, setOpen }) => {
+  console.log(`- priceDates: ${priceDates}`)
   return (
     <div className="w-[100%] bg-zinc-100 rounded-lg shadow-md shadow-zinc-200 mb-5">
       <div className="grid grid-cols-1 md:grid-cols-2">
@@ -14,10 +15,10 @@ const TourStats = ({ selectedTour, priceDates, prices, setOpen }) => {
               </p>
 
               <p>
-                <span className="text-xl md:text-3xl text-zinc-600 pr-1">
-                  ${sortPrice(prices)}
+                <span className={`text-xl ${setMissingDateAndPriceTextSize ? 'md:text-l' : 'md:text-3xl'} text-zinc-600 pr-1`}>
+                  {sortPrice(prices)}
                 </span>
-                <span>(USD)</span>
+                <span>{showCurrency(prices)}</span>
               </p>
             </div>
           </div>
