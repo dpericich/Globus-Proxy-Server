@@ -1,15 +1,18 @@
-import { Link } from 'react-router-dom'
-import globusLogo from '../../public/globus.png'
-import avalonLogo from '../../public/avalon.png'
-import cosmosLogo from '../../public/cosmos.png'
+import { Link } from "react-router-dom";
+import globusLogo from "../../public/globus.png";
+import avalonLogo from "../../public/avalon.png";
+import cosmosLogo from "../../public/cosmos.png";
 
 const brandLinks = [
-  { image: globusLogo, link: '/globus-tours' },
-  { image: avalonLogo, link: '/avalon-tours' },
-  { image: cosmosLogo, link: '/cosmos-tours' },
-]
+  { image: globusLogo, link: "/globus-tours" },
+  { image: avalonLogo, link: "/avalon-tours" },
+  { image: cosmosLogo, link: "/cosmos-tours" },
+];
 
 const Banner = () => {
+  const clearLocalStorage = () => {
+    localStorage.clear();
+  };
   return (
     <div className="h-screen bg-white">
       <div className='bg-center bg-cover bg-[url("/public/ocean.jpg")] h-[90%] md:h-[60%] md:rounded-md'>
@@ -29,7 +32,7 @@ const Banner = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center bg-black/60 p-3 h-[50%] w-[100%] md:h-[30%]">
             {brandLinks.map((item, i) => (
-              <Link key={i} to={item.link}>
+              <Link key={i} to={item.link} onClick={clearLocalStorage}>
                 <div className="flex justify-center items-center">
                   <img
                     src={item.image}
@@ -42,7 +45,7 @@ const Banner = () => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Banner
+export default Banner;

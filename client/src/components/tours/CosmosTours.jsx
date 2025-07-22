@@ -40,7 +40,7 @@ const CosmosTours = () => {
 
   return (
     <div className="flex flex-col">
-      <div className="grid grid-cols-1 md:grid-cols-2 justify-center items-center w-[100%] py-1 px-3 bg-zinc-200">
+      <div className="sticky top-0 grid grid-cols-1 md:grid-cols-2 justify-center items-center w-[100%] py-1 px-3 bg-black/80">
         <div className="flex justify-start items-center my-1">
           <SearchBar search={search} setSearch={setSearch} />
         </div>
