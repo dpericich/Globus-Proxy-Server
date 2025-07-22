@@ -1,31 +1,41 @@
-import { useState, useEffect, useContext } from 'react'
-import { GlobusToursContext } from '../../context/GlobusContext'
-import SearchBar from '../SearchBar'
-import Loading from '../Loading'
-import TourCard from './TourCard'
-import logo from '../../../public/globus.png'
-import { filters } from '../../locationFilters'
+import { useState, useEffect, useContext } from "react";
+import { GlobusToursContext } from "../../context/GlobusContext";
+import SearchBar from "../SearchBar";
+import Loading from "../Loading";
+import TourCard from "./TourCard";
+import logo from "../../../public/globus.png";
+import { filters } from "../../locationFilters";
 
 const GlobusTours = () => {
-  const [data, setData] = useState(null)
-  const [filteredData, setFilteredData] = useState(null)
-  const [search, setSearch] = useState('')
-  const brand = 'Globus'
-  const { tours } = useContext(GlobusToursContext)
-  console.log('This is Globus list comp', tours)
+  const [data, setData] = useState(null);
+  const [filteredData, setFilteredData] = useState(null);
+  const [search, setSearch] = useState("");
+  const brand = "Globus";
+  const { tours } = useContext(GlobusToursContext);
 
   useEffect(() => {
-    setData(tours)
-    const results = []
-    tours?.forEach(item => {
-      for (let i = 0; i < item.Name.split(' ').length; i++) {
-        if (filters.includes(item.Name.split(' ')[i])) {
-          results.push(item)
+    setData(tours);
+    //
+    const startingScroll = parseInt(localStorage.getItem("scrollPosition"));
+    setTimeout(() => {
+      window.scrollTo({ top: startingScroll });
+    }, 0);
+    //
+    const results = [];
+    tours?.forEach((item) => {
+      for (let i = 0; i < item.Name.split(" ").length; i++) {
+        if (filters.includes(item.Name.split(" ")[i])) {
+          results.push(item);
         }
       }
-    })
-    setFilteredData(results)
-  }, [tours])
+    });
+    setFilteredData(results);
+  }, [tours]);
+  const storeScroll = () => {
+    console.log("CLICKED");
+    // localStorage.clear();
+    localStorage.setItem("scrollPosition", window.scrollY);
+  };
 
   return (
     <div className="flex flex-col">
@@ -43,10 +53,10 @@ const GlobusTours = () => {
         </>
       ) : (
         <div className="">
-          {search === '' ? (
+          {search === "" ? (
             <div className="">
               {filteredData?.map((tour, i) => (
-                <div key={i}>
+                <div key={i} onClick={storeScroll}>
                   <TourCard tour={tour} brand={brand} />
                 </div>
               ))}
@@ -54,11 +64,11 @@ const GlobusTours = () => {
           ) : (
             <>
               {filteredData
-                .filter(tour =>
+                .filter((tour) =>
                   tour.Name.toLowerCase().includes(search.toLowerCase())
                 )
                 .map((tour, i) => (
-                  <div key={i}>
+                  <div key={i} onClick={storeScroll}>
                     <TourCard tour={tour} brand={brand} />
                   </div>
                 ))}
@@ -67,7 +77,7 @@ const GlobusTours = () => {
         </div>
       )}
     </div>
-  )
-}
+  );
+};
 
-export default GlobusTours
+export default GlobusTours;
