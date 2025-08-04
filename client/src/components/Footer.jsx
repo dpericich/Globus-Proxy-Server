@@ -1,5 +1,5 @@
-import { Link } from 'react-router-dom'
-import logo from '../assets/Safe Travels_LOGO FINAL.png'
+import { Link } from "react-router-dom";
+import logo from "../assets/Safe Travels_LOGO FINAL.png";
 
 const Footer = () => {
   return (
@@ -13,11 +13,11 @@ const Footer = () => {
           HOME
         </Link>
         <p className="text-zinc-400 text-xs">
-          Copyright © 2024 - SafeTravelsGG
+          Copyright © {new Date().getFullYear()} - SafeTravelsGG
         </p>
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Footer
+export default Footer;

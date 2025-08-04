@@ -1,4 +1,9 @@
-import { useState, useEffect, useContext } from "react";
+// 8/4 updates - we had an issue reported that the mobile "scroll back" functionality wasn't working properly. We've not refactored so...
+// 1. the data is set AND filters before scroll position logic
+// 2. added logic to parsing "scroll position" into an INT... it now clearly states 10 for "base 10" and also uses the fallback "0" so doesn't scroll to invalid place.
+// 3. Sets a slightly longer timeout (50) so the scrolling waits until everything is painted.
+
+import { useState, useEffect, useContext, useLayoutEffect } from "react";
 import { GlobusToursContext } from "../../context/GlobusContext";
 import SearchBar from "../SearchBar";
 import Loading from "../Loading";
@@ -13,14 +18,28 @@ const GlobusTours = () => {
   const brand = "Globus";
   const { tours } = useContext(GlobusToursContext);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   setData(tours);
+  //   //
+  //   const startingScroll = parseInt(localStorage.getItem("scrollPosition"));
+  //   setTimeout(() => {
+  //     window.scrollTo({ top: startingScroll });
+  //   }, 0);
+  //   //
+  //   const results = [];
+  //   tours?.forEach((item) => {
+  //     for (let i = 0; i < item.Name.split(" ").length; i++) {
+  //       if (filters.includes(item.Name.split(" ")[i])) {
+  //         results.push(item);
+  //       }
+  //     }
+  //   });
+  //   setFilteredData(results);
+  // }, [tours]);
+  useLayoutEffect(() => {
+    // Set your data state from context
     setData(tours);
-    //
-    const startingScroll = parseInt(localStorage.getItem("scrollPosition"));
-    setTimeout(() => {
-      window.scrollTo({ top: startingScroll });
-    }, 0);
-    //
+    // Filter data immediately after setting data
     const results = [];
     tours?.forEach((item) => {
       for (let i = 0; i < item.Name.split(" ").length; i++) {
@@ -30,10 +49,17 @@ const GlobusTours = () => {
       }
     });
     setFilteredData(results);
+
+    // Restore scroll position - note 10 for "base 10" - also uses fallback "0" so doesn't scroll to invalid place.
+    const startingScroll =
+      parseInt(localStorage.getItem("scrollPosition"), 10) || 0;
+
+    // Add a slightly longer timeout for mobile reliability
+    setTimeout(() => {
+      window.scrollTo({ top: startingScroll });
+    }, 100); // You can try 0, 50, or 100ms depending on device behavior
   }, [tours]);
   const storeScroll = () => {
-    console.log("CLICKED");
-    // localStorage.clear();
     localStorage.setItem("scrollPosition", window.scrollY);
   };
 

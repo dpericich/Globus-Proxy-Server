@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useLayoutEffect, useContext } from "react";
 import { CosmosToursContext } from "../../context/CosmosContext";
 import SearchBar from "../SearchBar";
 import Loading from "../Loading";
@@ -13,14 +13,34 @@ const CosmosTours = () => {
   const brand = "Cosmos";
   const { tours } = useContext(CosmosToursContext);
 
-  useEffect(() => {
+  // useEffect(() => {
+  //   setData(tours);
+  //   //
+  //   const startingScroll = parseInt(localStorage.getItem("scrollPosition"));
+  //   setTimeout(() => {
+  //     window.scrollTo({ top: startingScroll });
+  //   }, 0);
+  //   //
+  //   const results = [];
+  //   tours?.forEach((item) => {
+  //     for (let i = 0; i < item.Name.split(" ").length; i++) {
+  //       if (filters.includes(item.Name.split(" ")[i])) {
+  //         results.push(item);
+  //       }
+  //     }
+  //   });
+  //   setFilteredData(results);
+  // }, [tours]);
+
+  // const storeScroll = () => {
+  //   console.log("CLICKED");
+  //   // localStorage.clear();
+  //   localStorage.setItem("scrollPosition", window.scrollY);
+  // };
+  useLayoutEffect(() => {
+    // Set your data state from context
     setData(tours);
-    //
-    const startingScroll = parseInt(localStorage.getItem("scrollPosition"));
-    setTimeout(() => {
-      window.scrollTo({ top: startingScroll });
-    }, 0);
-    //
+    // Filter data immediately after setting data
     const results = [];
     tours?.forEach((item) => {
       for (let i = 0; i < item.Name.split(" ").length; i++) {
@@ -30,11 +50,17 @@ const CosmosTours = () => {
       }
     });
     setFilteredData(results);
-  }, [tours]);
 
+    // Restore scroll position - note 10 for "base 10" - also uses fallback "0" so doesn't scroll to invalid place.
+    const startingScroll =
+      parseInt(localStorage.getItem("scrollPosition"), 10) || 0;
+
+    // Add a slightly longer timeout for mobile reliability
+    setTimeout(() => {
+      window.scrollTo({ top: startingScroll });
+    }, 100); // You can try 0, 50, or 100ms depending on device behavior
+  }, [tours]);
   const storeScroll = () => {
-    console.log("CLICKED");
-    // localStorage.clear();
     localStorage.setItem("scrollPosition", window.scrollY);
   };
 

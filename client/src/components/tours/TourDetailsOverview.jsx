@@ -19,7 +19,8 @@ const TourDetailsOverview = ({ selectedTour, id, brand }) => {
       fetch(
         // 'https://globus.safetravelsggapi.com/api/v1/globus/get-departures-by-season',
         // 'https://globus.safetravelsggapi.com/api/v1/globus/get-departures',
-        "http://localhost:8000/api/v1/globus/get-departures",
+        // "http://localhost:8000/api/v1/globus/get-departures",
+        "https://globus-proxy-server.onrender.com/api/v1/globus/get-departures",
         {
           headers: {
             "Content-Type": "application/json",

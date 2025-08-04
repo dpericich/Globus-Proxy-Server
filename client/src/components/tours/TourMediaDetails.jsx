@@ -17,7 +17,8 @@ const TourMediaDetails = () => {
     try {
       fetch(
         //'https://globus.safetravelsggapi.com/api/v1/globus/get-tour-media',
-        "http://localhost:8000/api/v1/globus/get-tour-media",
+        // "http://localhost:8000/api/v1/globus/get-tour-media",
+        "https://globus-proxy-server.onrender.com/api/v1/globus/get-tour-media",
 
         {
           headers: {

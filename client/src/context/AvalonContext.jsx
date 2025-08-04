@@ -7,7 +7,8 @@ export const AvalonToursContextProvider = ({ children }) => {
   useEffect(() => {
     fetch(
       // 'https://globus.safetravelsggapi.com/api/v1/globus/get-all-available-media-tours'
-      "http://localhost:8000/api/v1/globus/get-all-available-media-tours"
+      // "http://localhost:8000/api/v1/globus/get-all-available-media-tours"
+      "https://globus-proxy-server.onrender.com/api/v1/globus/get-all-available-media-tours"
     )
       .then((res) => res.json())
       .then((res) =>

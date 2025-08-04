@@ -1,11 +1,8 @@
-# React + Vite
+##### 7/25 update - Issues with AWS. I've redeployed backend to Render. Frontend still with hostinger. Render made it much easier than I remember.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+- basic plan $7/mo
 
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+Methods below from "Sam Meech Ward" on youtube
 
 SSH Key = ssh -o "IdentitiesOnly=yes" -i "ST-Globus-EC2.pem" ubuntu@ec2-54-212-30-163.us-west-2.compute.amazonaws.com
 
